@@ -22,7 +22,7 @@
         </dd>
 
         <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.password) 
+            @Html.DisplayNameFor(model => model.password)
         </dt>
 
         <dd class="col-sm-9">
@@ -84,22 +84,21 @@
         <dd class="col-sm-9">
             @Html.DisplayFor(model => model.MiddleName)
         </dd>
-
     </dl>
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-<div class="form-actions no-color">
-    <div class="col-md-offset-2 col-md-10">
+        <div class="form-actions no-color">
+            <div class="col-md-offset-2 col-md-10">
 
-        <button type="submit" class="btn btn-success" value="Delet" data-toggle="modal" data-target="#id" >
-            Delete
-        </button>
-        <br>
-    </div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+                <button type="submit" class="btn btn-success" value="Delet" data-toggle="modal" data-target="#id">
+                    Delete
+                </button>
+                <br>
+            </div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
     }
 </div>

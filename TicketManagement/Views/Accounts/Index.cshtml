@@ -3,13 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
-<br /> <br />
+<br />
+<br />
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create") 
+    @Html.ActionLink("Create New", "Create")
 </p>
-<div class="position-relative"> 
+<div class="position-relative">
     <table class="table table-striped">
         <tr>
             <th>
@@ -44,43 +45,41 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.username)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.password)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.usertype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.department)
                 </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.password)
-                    </td>*@
                 <td>
-                    @Html.DisplayFor(modelItem => item.usertype)
+                    @Html.DisplayFor(modelItem => item.branch)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.status)
+                    @Html.DisplayFor(modelItem => item.LastName)
                 </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.department)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.branch)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MiddleName)
-                    </td>*@
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    @Html.DisplayFor(modelItem => item.FirstName)
                 </td>
-            </tr> 
-        }
-            
-        </div>
-       
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
 
+        }
+</div>
     </table>

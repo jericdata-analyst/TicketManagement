@@ -41,6 +41,7 @@ namespace TicketManagement.Models
 
         public string status { get; set; }
         [Required]
+        
         public string username { get; set; }
         [Required]
 

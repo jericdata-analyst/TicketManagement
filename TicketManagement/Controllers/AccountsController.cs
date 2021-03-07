@@ -30,7 +30,7 @@ namespace TicketManagement.Controllers
                 accts = accts.Where(s => s.username.Contains(txtsearch));
                 accts = accts.Where(s => s.LastName.Contains(txtsearch));
             }
-            
+
             //return all the user
             return View(accts.ToList());
         }
