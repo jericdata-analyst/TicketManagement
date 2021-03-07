@@ -1,0 +1,90 @@
+﻿@model TicketManagement.Models.tblaccount
+
+@{
+    ViewBag.Title = "Details";
+}
+<br />
+<br />
+<h2>Details</h2>
+
+<div class="">
+    
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.usertype)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.usertype)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.department)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.department)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.branch)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.branch)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
