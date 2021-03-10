@@ -9,6 +9,7 @@
 
 namespace TicketManagement.Models
 {
+    using System.Web.Mvc;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -40,12 +41,16 @@ namespace TicketManagement.Models
         [Required]
 
         public string status { get; set; }
+
         [Required]
         
         public string username { get; set; }
+
         [Required]
 
         public string usertype { get; set; }
     }
-   
+
+    
+
 }
