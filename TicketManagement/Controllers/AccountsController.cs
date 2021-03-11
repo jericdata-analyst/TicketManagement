@@ -49,13 +49,27 @@ namespace TicketManagement.Controllers
             {
                 db.tblaccounts.Add(newAccount);
                 _ = db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("index");
+                bool isUnameAlreadyExists = db.tblaccounts.Any(x => x.username == newAccount.username);
+                if (isUnameAlreadyExists)
+                {
+                    ModelState.AddModelError("username", "User with this email already exists");
+                    return View(newAccount);
+                }
+                else
+                {
+                    db.tblaccounts.Add(newAccount);
+                    _ = db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             else
             {
                 return View(newAccount);
             }
+
         }
+    
 
         //form get
         public ActionResult Edit(int? ID)
@@ -125,6 +139,10 @@ namespace TicketManagement.Controllers
             }
         }
 
-        
+       
+
+
+
+
     }
 }

@@ -15,9 +15,9 @@ namespace TicketManagement.Models
     using System.ComponentModel.DataAnnotations;
     using System.Diagnostics;
 
-   
     public partial class tblaccount
     {
+       
         [Required]
         public string branch { get; set; }
         [Required]
@@ -43,7 +43,7 @@ namespace TicketManagement.Models
         public string status { get; set; }
 
         [Required]
-        
+       
         public string username { get; set; }
 
         [Required]
