@@ -8,43 +8,44 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-  <a class="navbar-brand" href="#">Ticket Management</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand" href="#">Ticket Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://localhost:44343/Accounts/">Accounts</a>
-      </li>
-      @*<li class="nav-item">
-        <a class="nav-link" href="#"></a>
-      </li>*@
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://localhost:44343/Accounts/">
+                    Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://localhost:44343/Accounts/">Accounts</a>
+            </li>
+            @*<li class="nav-item">
+                  <a class="nav-link" href="#"></a>
+                </li>*@
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
 </nav>
 
 <body>
@@ -63,7 +64,7 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
                                     <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
-                                    <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
+                                    <button class="btn btn_get btn_get_two" type="submit" href="#">Subscribe</button>
                                     <p class="mchimp-errmessage" style="display: none;"></p>
                                     <p class="mchimp-sucmessage" style="display: none;"></p>
                                 </form>
@@ -75,10 +76,9 @@
                                 <ul class="list-unstyled f_list">
                                     <li><a href="#">Company</a></li>
                                     <li><a href="#">Android App</a></li>
-                                   
+
                                     <li><a href="#">Desktop</a></li>
                                     <li><a href="#">Projects</a></li>
-                                    
                                 </ul>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                                 <ul class="list-unstyled f_list">
                                     <li><a href="#">FAQ</a></li>
                                     <li><a href="#">Term &amp; conditions</a></li>
-                                    
+
                                     <li><a href="#">Support Policy</a></li>
                                     <li><a href="#">Privacy</a></li>
                                 </ul>
@@ -118,14 +118,11 @@
                         <div class="col-lg-6 col-sm-7">
                             <p class="mb-0 f_400">© Jeric Malapad.. 2021 All rights reserved.</p>
                         </div>
-                       
                     </div>
                 </div>
             </div>
         </footer>
     </div>
-
-
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

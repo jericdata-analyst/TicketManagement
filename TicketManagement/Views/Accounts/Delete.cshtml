@@ -9,7 +9,6 @@
 <br />
 <h2>Delete</h2>
 
-
 <div class="alert alert-dismissible alert-warning">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <h4 class="alert-heading">Warning!</h4>
@@ -95,20 +94,20 @@
 
     @using (Html.BeginForm())
     {
-        @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <div class="col-sm-9">
+    <div class="form-actions no-color">
+        <div class="col-sm-9">
 
-                <button type="submit" class="btn btn-success" value="Delet" data-toggle="modal" data-target="#id">
-                    Delete
-                </button>
-                <br>
-                <br>
-            </div>
-            <div class="">
-                @Html.ActionLink("Back to List", "Index")
-            </div>
+            <button type="submit" class="btn btn-danger" value="Delete" data-toggle="modal" data-target="#id">
+                Delete
+            </button>
+            <br>
+            <br>
         </div>
+        <div class="">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
     }
 </div>

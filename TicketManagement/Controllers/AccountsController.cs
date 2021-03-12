@@ -24,18 +24,15 @@ namespace TicketManagement.Controllers
             ViewBag.username = new SelectList(uTypeList);
             //select all the users
             var accts = from m in db.tblaccounts select m;
-            
 
             //search all user
             if (!String.IsNullOrEmpty(txtsearch))
             {
                 accts = accts.Where(s => s.username.Contains(txtsearch));
-               
             }
 
             //return all the user
             return View(accts.ToList());
-            
         }
 
         //form get
@@ -51,11 +48,10 @@ namespace TicketManagement.Controllers
         {
             if (!ModelState.IsValid)
                 return View(newAccount);
-            if(db.tblaccounts.Any(k => k.username == newAccount.username))
+            if (db.tblaccounts.Any(k => k.username == newAccount.username))
             {
                 ModelState.AddModelError("username", "Username already exist");
                 return View(newAccount);
-
             }
             db.tblaccounts.Add(newAccount);
             db.SaveChanges();
@@ -65,9 +61,7 @@ namespace TicketManagement.Controllers
             //{
             //    return View(newAccount);
             //}
-
         }
-    
 
         //form get
         public ActionResult Edit(int? ID)
@@ -136,7 +130,5 @@ namespace TicketManagement.Controllers
                 return View(db.tblaccounts.Where(x => x.id == id).FirstOrDefault());
             }
         }
-
-       
     }
 }

@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using TicketManagement.Models;
-
 
 namespace TicketManagement.Controllers
 {
     public class HomeController : Controller
     {
-        CS405Entities1 db = new CS405Entities1();
+        private CS405Entities1 db = new CS405Entities1();
+
         public ActionResult Index()
         {
             return View();
         }
 
- 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -30,9 +25,5 @@ namespace TicketManagement.Controllers
 
             return View();
         }
-
-        
-
-
     }
 }
