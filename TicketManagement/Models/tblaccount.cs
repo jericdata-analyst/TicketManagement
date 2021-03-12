@@ -43,7 +43,7 @@ namespace TicketManagement.Models
         public string status { get; set; }
 
         [Required]
-       
+       [UIHint("username")]
         public string username { get; set; }
 
         [Required]

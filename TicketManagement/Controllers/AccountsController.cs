@@ -24,15 +24,18 @@ namespace TicketManagement.Controllers
             ViewBag.username = new SelectList(uTypeList);
             //select all the users
             var accts = from m in db.tblaccounts select m;
+            
+
             //search all user
             if (!String.IsNullOrEmpty(txtsearch))
             {
                 accts = accts.Where(s => s.username.Contains(txtsearch));
-                accts = accts.Where(s => s.LastName.Contains(txtsearch));
+               
             }
 
             //return all the user
             return View(accts.ToList());
+            
         }
 
         //form get
@@ -43,30 +46,25 @@ namespace TicketManagement.Controllers
 
         //form post
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(tblaccount newAccount)
         {
-            if (ModelState.IsValid)
-            {
-                db.tblaccounts.Add(newAccount);
-                _ = db.SaveChanges();
-                return RedirectToAction("index");
-                bool isUnameAlreadyExists = db.tblaccounts.Any(x => x.username == newAccount.username);
-                if (isUnameAlreadyExists)
-                {
-                    ModelState.AddModelError("username", "User with this email already exists");
-                    return View(newAccount);
-                }
-                else
-                {
-                    db.tblaccounts.Add(newAccount);
-                    _ = db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-            }
-            else
-            {
+            if (!ModelState.IsValid)
                 return View(newAccount);
+            if(db.tblaccounts.Any(k => k.username == newAccount.username))
+            {
+                ModelState.AddModelError("username", "Username already exist");
+                return View(newAccount);
+
             }
+            db.tblaccounts.Add(newAccount);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+            //else
+            //{
+            //    return View(newAccount);
+            //}
 
         }
     
@@ -140,9 +138,5 @@ namespace TicketManagement.Controllers
         }
 
        
-
-
-
-
     }
 }
