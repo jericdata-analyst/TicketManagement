@@ -22,14 +22,14 @@ namespace TicketManagement
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-lux.css",
                       "~/Content/site.css"));
         }
 
         public static void StyleBundle(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/css")
-                     .Include("~/Content/bootstrap.css"));
+                     .Include("~/Content/bootstrap-lux.css"));
         }
 
         public static void ScriptBundle(BundleCollection bundles)
