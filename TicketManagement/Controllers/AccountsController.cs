@@ -31,6 +31,8 @@ namespace TicketManagement.Controllers
                 accts = accts.Where(s => s.username.Contains(txtsearch));
             }
 
+            //SWEETALERT
+
             //return all the user
             return View(accts.ToList());
         }
@@ -55,6 +57,7 @@ namespace TicketManagement.Controllers
             }
             db.tblaccounts.Add(newAccount);
             db.SaveChanges();
+
             return RedirectToAction("Index");
 
             //else

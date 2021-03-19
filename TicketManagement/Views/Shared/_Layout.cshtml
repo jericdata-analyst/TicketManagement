@@ -6,9 +6,10 @@
     <title>Ticket Management</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand" href="#">Ticket Management</a>
+    <a class="navbar-brand" href="https://localhost:44343/Home/About">Ticket Management</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,9 +17,8 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="https://localhost:44343/Accounts/">
+                <a class="nav-link" href="https://localhost:44343/">
                     Home
-                    <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -28,7 +28,7 @@
                   <a class="nav-link" href="#"></a>
                 </li>*@
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="https://localhost:44343/Home/About">About</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
@@ -62,7 +62,7 @@
                             <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                                 <h5 class="f-title f_600 t_color f_size_18">Get in Touch</h5>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
+                                <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="" _lpchecked="1">
                                     <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
                                     <button class="btn btn_get btn_get_two" type="submit" href="#">Subscribe</button>
                                     <p class="mchimp-errmessage" style="display: none;"></p>
@@ -95,14 +95,17 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
-                            <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
-                                <h5 class="f-title f_600 t_color f_size_18">Team Solutions</h5>
-                                <div class="f_social_icon">
-                                    <a href="#" class="fab fa-facebook"></a>
-                                    <a href="#" class="fab fa-twitter"></a>
-                                    <a href="#" class="fab fa-linkedin"></a>
-                                    <a href="#" class="fab fa-pinterest"></a>
-                                </div>
+
+                            <h5 class="f-title f_600 t_color f_size_18">Team Solutions</h5>
+                            <div class="f_social_icon">
+                                <p style="text-align:left">
+                                    <!--Facebook icon-->
+                                    <a href="http://facebook.com/" target="_blank"><img alt="" src="https://s3.amazonaws.com/flashissue/ueBIjxRoTBuYR6XWW1iO_v3qVW5nRUq5VZF9RQXi2_twitter.png" /> </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <!--Google+ icon-->
+                                    <a href="http://www.google.com" target="_blank"><img alt="" src="https://s3.amazonaws.com/flashissue/gHd2XoyiQbKBqljm7bzg_63j3xtd7SX28TTMeOSfZ_google.png" /> </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <!--Twitter icon-->
+                                    <a href="http://twitter.com/" target="_blank"><img alt="" src="https://s3.amazonaws.com/flashissue/MsIJsIsDT9WLAxxH4aIK_OgdHV3vxSR2737LGd8cq_facebook.png" /> </a>
+                                </p>
                             </div>
                         </div>
                     </div>

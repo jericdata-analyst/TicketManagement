@@ -7,16 +7,25 @@
 <br />
 <br />
 <br />
+
 <h1>Accounts</h1>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
     @using (Html.BeginForm("Index", "Accounts", FormMethod.Get))
     {
-    <p>
+        <div class="d-flex bd-highlight">
+            <div class="p-2 flex-grow-1 bd-highlight">
+                <input type="button" class="btn btn-outline-success" value="Create New Accounts" onclick="location.href='https://localhost:44343/Accounts/create'" />
+            </div>
+
+            <div class="p-2 bd-highlight">
+    <p class="mx-auto">
         Search: @Html.TextBox("txtsearch")
         <input type="submit" value="Filter" />
     </p>
+    </div>
+    </div>
+
 }
     </p>
     <div class="position-relative">
@@ -34,6 +43,7 @@
                 <th scope="row">
                     @Html.DisplayNameFor(model => model.status)
                 </th>
+
                 @*<th>
                         @Html.DisplayNameFor(model => model.department)
                     </th>
@@ -83,9 +93,16 @@
                             @Html.DisplayFor(modelItem => item.MiddleName)
                         </td>*@
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+                            <input type="submit" class="btn btn-success btn-sm" value=" Edit  " onclick="location.href='@Url.Action("Edit", new { id = item.id })'" /> &nbsp;
+                            <input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.id })'" /> &nbsp;
+                            <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.id })'" />
+
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.id })
+                                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+                        </div>
                     </td>
                 </tr>
 
@@ -106,6 +123,26 @@
             <button type="button" class="btn btn-secondary">7</button>
         </div>
         <div class="btn-group" role="group" aria-label="Third group">
-            <button type="button" class="btn btn-secondary">8</button>
+            <button type="button" value="Alert Message" name="alertMessage" id="btnAlertMessage" class="btn btn-secondary">ALERT</button>
         </div>
     </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+
+        ////read viewbagdata
+        $(document).ready(function () {
+            $("#btnAlertMessage").click(function () {
+                //alert("Alert Message");
+                swal(
+                    'Success!',
+                    'Account Added Succesfully!',
+                    'success'
+                );
+            });
+
+        });
+    </script>
