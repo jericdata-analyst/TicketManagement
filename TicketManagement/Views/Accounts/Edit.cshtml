@@ -85,7 +85,7 @@
                 @Html.DropDownList("status", new List<SelectListItem>
          { new SelectListItem { Text = "Active", Value = "Active", Selected=true},
            new SelectListItem { Text = "Inactive", Value = "Inactive"},
-           }, new { @class = "form-control"})
+           }, new { @class = "form-control" })
 
                 @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
             </div>
@@ -136,7 +136,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
 
-                <button type="submit" id ="btnAlertMessage" class="btn btn-success" value="Save" data-toggle="modal" data-target="#id">
+                <button type="submit" id="btnAlertMessage" class="btn btn-success" value="Save">
                     Save
                 </button>
             </div>
@@ -148,31 +148,28 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 
 <script type="text/javascript">
 
     ////read viewbagdata
+
     $(document).ready(function () {
         $("#btnAlertMessage").click(function () {
-
-            swal({
-                title: "Success!",
-                text: "Saved successfully",
-                type: "success",
-                confirmButtonText: "Ok"
-            }, function () {
-                window.location = "Index";
-            }, 1000);
-
+            // alert("Alert Message");
+            swal(
+                'Saved!',
+                'Account Updated!',
+                'success'
+            );
         });
-
     });
+
     //status active disable
-    $('#status').attr("style", "pointer-events: none;");
+    //$('#status').attr("style", "pointer-events: none;");
     //username disable
     $('#username').attr("style", "pointer-events: none;");
 
@@ -183,7 +180,5 @@
         else if (document.getElementById('usertype').value == 'Technical')
             document.getElementById("department").value = 'Computer Science';
 
-
     };
-
 </script>

@@ -162,21 +162,18 @@
 <script type="text/javascript">
 
     ////read viewbagdata
-    $(document).ready(function () {
+
+        $(document).ready(function () {
         $("#btnAlertMessage").click(function () {
-
-            swal({
-                title: "Congratulaions!",
-                text: "Signed up successfully",
-                type: "success",
-                confirmButtonText: "Ok"
-            }, function () {
-                window.location = "Index";
-            }, 1000);
-
+           // alert("Alert Message");
+            swal(
+                'Success!',
+                'Account Added Succesfully!',
+                'success'
+            );
         });
-
     });
+
     //status active disable
     $('#status').attr("style", "pointer-events: none;");
 

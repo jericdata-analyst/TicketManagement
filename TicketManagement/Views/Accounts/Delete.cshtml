@@ -122,12 +122,12 @@
     ////read viewbagdata
     $(document).ready(function () {
         $("#btnAlertMessage").click(function () {
-            //alert("Alert Message");
-            swal("Success!", "Account deleted successfully", "success").then((value) => {
-                window.location = "/Home/Index";
-            });
-
+            // alert("Alert Message");
+            swal(
+                'Success!',
+                'Account Deleted Succesfully!',
+                'success'
+            );
         });
-
     });
 </script>
