@@ -134,15 +134,40 @@
     <script type="text/javascript">
 
         ////read viewbagdata
-        $(document).ready(function () {
-            $("#btnAlertMessage").click(function () {
-                //alert("Alert Message");
-                swal(
-                    'Success!',
-                    'Account Added Succesfully!',
-                    'success'
-                );
-            });
+        //$(document).ready(function () {
+        //    $("#btnAlertMessage").click(function () {
+        //        //alert("Alert Message");
+        //        swal(
+        //            'Success!',
+        //            'Account Added Succesfully!',
+        //            'success'
+        //        );
+        //    });
 
-        });
+        //});
+
+        var msg = '@TempData["Msg"]';
+        var msg1 = '@TempData["MsgEdit"]';
+        var msg2 = '@TempData["MsgDelete"]';
+
+    if (msg.length) {
+        swal(
+            'Success!',
+            'Account Added Succesfully!',
+            'success');
+    }
+        if (msg1.length) {
+            swal(
+                'Success!',
+                'Account Updated! Succesfully!',
+                'success');
+        }
+        if (msg2.length) {
+            swal(
+                'Success!',
+                'Account Deleted Succesfully!',
+                'success');
+
+
+        }
     </script>

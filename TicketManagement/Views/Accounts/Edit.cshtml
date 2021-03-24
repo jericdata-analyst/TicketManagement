@@ -22,7 +22,8 @@
         <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", @disable = "disable" } })
+                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control ", @disabled = "disabled" } })
+                @Html.HiddenFor(model => model.username, new { htmlAttributes = new { @class = "form-control " } })
                 @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -91,9 +92,6 @@
             </div>
         </div>
 
-        <script>
-        </script>
-
         <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.department, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -157,21 +155,22 @@
 
     ////read viewbagdata
 
-    $(document).ready(function () {
-        $("#btnAlertMessage").click(function () {
-            // alert("Alert Message");
-            swal(
-                'Saved!',
-                'Account Updated!',
-                'success'
-            );
-        });
-    });
+    //$(document).ready(function () {
+    //    $("#btnAlertMessage").click(function () {
+    //        // alert("Alert Message");
+    //        swal(
+    //            'Saved!',
+    //            'Account Updated!',
+    //            'success'
+    //        );
+    //    });
+    //});
 
     //status active disable
     //$('#status').attr("style", "pointer-events: none;");
+
     //username disable
-    $('#username').attr("style", "pointer-events: none;");
+    //$('#username').attr("style", "pointer-events: none;", "background : #ccc;");
 
     function change() {
         if (document.getElementById('usertype').value == 'Administrator')

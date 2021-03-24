@@ -86,12 +86,21 @@
 
         <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+
+            <div class="col-md-10 " style="display:none">
 
                 @Html.DropDownList("status", new List<SelectListItem>
          {
-           new SelectListItem { Text = "Active" ,Value = "Active", Selected=true},
+           new SelectListItem { Text = "Active" ,Value = "Active"},
            }, new { @class = "form-control" })
+            </div>
+
+            <div class="col-md-10 ">
+
+                @Html.DropDownList("displaystatus", new List<SelectListItem>
+        {
+          new SelectListItem { Text = "Active" ,Value = "Active", Selected=true},
+          }, new { @class = "form-control", disabled = "disabled" })
 
                 @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
             </div>
@@ -163,19 +172,19 @@
 
     ////read viewbagdata
 
-        $(document).ready(function () {
-        $("#btnAlertMessage").click(function () {
-           // alert("Alert Message");
-            swal(
-                'Success!',
-                'Account Added Succesfully!',
-                'success'
-            );
-        });
-    });
+    //$(document).ready(function () {
+    //    $("#btnAlertMessage").click(function () {
+    //        // alert("Alert Message");
+    //        swal(
+    //            'Success!',
+    //            'Account Added Succesfully!',
+    //            'success'
+    //        );
+    //    });
+    //});
 
     //status active disable
-    $('#status').attr("style", "pointer-events: none;");
+    //$('#status').attr("style", "pointer-events: none;");
 
     function change() {
         if (document.getElementById('usertype').value == 'Administrator')

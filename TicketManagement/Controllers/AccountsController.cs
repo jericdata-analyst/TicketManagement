@@ -55,9 +55,9 @@ namespace TicketManagement.Controllers
                 ModelState.AddModelError("username", "Username already exist");
                 return View(newAccount);
             }
+            TempData["Msg"] = "Account Successfully Added";
             db.tblaccounts.Add(newAccount);
             db.SaveChanges();
-
             return RedirectToAction("Index");
 
             //else
@@ -84,10 +84,11 @@ namespace TicketManagement.Controllers
         //POST EDIT ACCOUNT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,LastName,FirstName,MiddleName,username,password,department,branch,usertype,status")] tblaccount editAccount)
+        public ActionResult Edit([Bind(Include = "id,LastName,FirstName,username,MiddleName,password,department,branch,usertype,status")] tblaccount editAccount)
         {
             if (ModelState.IsValid)
             {
+                TempData["MsgEdit"] = "Account Successfully Updated";
                 db.Entry(editAccount).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -115,6 +116,7 @@ namespace TicketManagement.Controllers
                 using (CS405Entities1 db = new CS405Entities1())
                 {
                     tblaccount acc = db.tblaccounts.Where(x => x.id == id).FirstOrDefault();
+                    TempData["MsgDelete"] = "Account Successfully Deleted";
                     db.tblaccounts.Remove(acc);
                     db.SaveChanges();
                 }
