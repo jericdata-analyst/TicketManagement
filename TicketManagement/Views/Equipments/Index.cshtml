@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TicketManagement.Models.tblaccount>
+﻿@model IEnumerable<TicketManagement.Models.tblequipment>
 
 @{
     ViewBag.Title = "Index";
@@ -8,14 +8,14 @@
 <br />
 <br />
 
-<h1>Accounts</h1>
+<h1>Equipments</h1>
 
 <p>
-    @using (Html.BeginForm("Index", "Accounts", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Equipments", FormMethod.Get))
     {
         <div class="d-flex bd-highlight">
             <div class="p-2 flex-grow-1 bd-highlight">
-                <input type="button" class="btn btn-outline-success" value="Create New Accounts" onclick="location.href='https://localhost:44343/Accounts/create'" />
+                <input type="button" class="btn btn-outline-success" value="Create New Equipment" onclick="location.href='https://localhost:44343/Equipments/Create'" />
             </div>
 
             <div class="p-2 bd-highlight">
@@ -33,33 +33,29 @@
         <table class="table table-striped">
             <tr class="table-primary">
                 <th scope="row">
-                    @Html.DisplayNameFor(model => model.username)
-                </th>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.password)
-                    </th>*@
-                <th scope="row">
-                    @Html.DisplayNameFor(model => model.usertype)
+                    @Html.DisplayNameFor(model => model.SerialNumber)
                 </th>
                 <th scope="row">
-                    @Html.DisplayNameFor(model => model.status)
+                    @Html.DisplayNameFor(model => model.Type)
                 </th>
-
-                @*<th>
-                        @Html.DisplayNameFor(model => model.department)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.branch)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LastName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FirstName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.MiddleName)*@
-                <!--<-->@*/th>*@
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.Manufacturer)
+                </th>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.YearModel)
+                </th>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.Branch)
+                </th>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.Department)
+                </th>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
                 <th scope="row"></th>
             </tr>
 
@@ -67,49 +63,47 @@
             {
                 <tr class="table-light">
                     <td>
-                        @Html.DisplayFor(modelItem => item.username)
-                    </td>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.password)
-                        </td>*@
-                    <td>
-                        @Html.DisplayFor(modelItem => item.usertype)
+                        @Html.DisplayFor(modelItem => item.SerialNumber)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.status)
+                        @Html.DisplayFor(modelItem => item.Type)
                     </td>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.department)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.branch)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FirstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MiddleName)
-                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Manufacturer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YearModel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Branch)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                            <input type="submit" class="btn btn-success btn-sm" value=" Edit  " onclick="location.href='@Url.Action("Edit", new { id = item.id })'" /> &nbsp;
-                            <input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.id })'" /> &nbsp;
-                            <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.id })'" />
+                            <input type="submit" class="btn btn-success btn-sm" value=" Edit  " onclick="location.href='@Url.Action("Edit", new { id = item.AssetNumber })'" /> &nbsp;
+                            <input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.AssetNumber })'" /> &nbsp;
+                            <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.AssetNumber })'" />
 
-                            @*@Html.ActionLink("Edit", "Edit", new { id = item.id })
-                                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.AssetNumber }) |*@
+                            @*@Html.ActionLink("Details", "Details", new { id = item.AssetNumber }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.AssetNumber })*@
                         </div>
                     </td>
                 </tr>
-
             }
     </div>
     </table>
+
 
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
@@ -154,19 +148,19 @@
     if (msg.length) {
         swal(
             'Success!',
-            'Account Added Succesfully!',
+            'Equipments Added Succesfully!',
             'success');
     }
         if (msg1.length) {
             swal(
                 'Success!',
-                'Account Updated! Succesfully!',
+                'Equipments Updated! Succesfully!',
                 'success');
         }
         if (msg2.length) {
             swal(
                 'Success!',
-                'Account Deleted Succesfully!',
+                'Equipments Deleted Succesfully!',
                 'success');
 
         }

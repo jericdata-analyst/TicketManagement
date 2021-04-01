@@ -15,38 +15,25 @@ namespace TicketManagement.Models
     using System.ComponentModel.DataAnnotations;
     using System.Diagnostics;
 
-    public partial class tblaccount
+    public partial class tblequipment
     {
         [Required]
-        public string branch { get; set; }
+        public int AssetNumber { get; set; }
         [Required]
-        public string department { get; set; }
+        public string SerialNumber { get; set; }
         [Required]
-
-        public string FirstName { get; set; }
+        public string Type { get; set; }
         [Required]
-        public int id { get; set; }
+        public string Manufacturer { get; set; }
         [Required]
-
-        public string LastName { get; set; }
+        public string YearModel { get; set; }
         [Required]
-
-        public string MiddleName { get; set; }
-
+        public string Description { get; set; }
         [Required]
-        [MinLength(8, ErrorMessage = "Password should be at least 8 characters.")]
-        [RegularExpression("^[a-zA-Z0-9_]+$", ErrorMessage = "Password should be composed of letters and numbers.")]
-        public string password { get; set; }
+        public string Branch { get; set; }
         [Required]
-
-        public string status { get; set; }
-
+        public string Department { get; set; }
         [Required]
-        [UIHint("username")]
-        public string username { get; set; }
-
-        [Required]
-
-        public string usertype { get; set; }
+        public string Status { get; set; }
     }
 }
