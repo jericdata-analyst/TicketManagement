@@ -3,21 +3,32 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+<br />
+<br />
+<br />
+<br />
 <h2>Edit</h2>
-
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>tblequipment</h4>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.AssetNumber)
+        @Html.HiddenFor(model => model.equipmentsId)
 
-        <div class="form-group">
+        <div class="form-group input-group mb-3">
+            @Html.LabelFor(model => model.AssetNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AssetNumber, new { htmlAttributes = new { @class = "form-control ", @disabled = "disabled" } })
+                @Html.HiddenFor(model => model.AssetNumber, new { htmlAttributes = new { @class = "form-control " } })
+                @Html.ValidationMessageFor(model => model.AssetNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.SerialNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control" } })
@@ -25,15 +36,26 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.DropDownList("Type", new List<SelectListItem>
+        { new SelectListItem { Text = "Select Type", Value = "", Selected=true},
+          new SelectListItem { Text = "CPU", Value = "CPU", Selected=false},
+          new SelectListItem { Text = "Keyboard", Value = "Keyboard"},
+          new SelectListItem { Text = "Mouse", Value = "Mouse"},
+          new SelectListItem { Text = "AVR", Value = "AVR"},
+          new SelectListItem { Text = "MAC", Value = "MAC"},
+          new SelectListItem { Text = "Printer", Value = "Printer"},
+          new SelectListItem { Text = "Projector", Value = "Projector"},
+
+          }, new { @class = "form-control", onchange = "change();" })
                 @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.Manufacturer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Manufacturer, new { htmlAttributes = new { @class = "form-control" } })
@@ -41,7 +63,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.YearModel, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.YearModel, new { htmlAttributes = new { @class = "form-control" } })
@@ -49,7 +71,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
@@ -57,33 +79,76 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.Branch, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Branch, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.DropDownList("Branch", new List<SelectListItem>
+          { new SelectListItem { Text = "Select Branch",Value="", Selected=true},
+            new SelectListItem { Text = "J.Sumulong", Value = "J.Sumulong"},
+            new SelectListItem { Text = "J.Abad Santos", Value = "J.Abad Santos"},
+            new SelectListItem { Text = "A.Mabini", Value = "A.Mabini"},
+            new SelectListItem { Text = "Plaridel", Value = "Plaridel"},
+            new SelectListItem { Text = "E.Esguerra", Value = "E.Esguerra"},
+            new SelectListItem { Text = "J.Rizal", Value = "J.Rizal"},
+            new SelectListItem { Text = "A.Bonifacio", Value = "A.Bonifacio"},
+
+            }, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Branch, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.DropDownList("Department", new List<SelectListItem>
+      { new SelectListItem { Text = "Select Department", Value="", Selected=true},
+        new SelectListItem { Text = "IT Department", Value = "IT Department"},
+        new SelectListItem { Text = "Finance", Value = "Finance"},
+        new SelectListItem { Text = "Office of Non Academic Department", Value = "Office of the Administration"},
+        new SelectListItem { Text = "Registrar ", Value = "Registrar "},
+        new SelectListItem { Text = "Accounting ", Value = "Accounting "},
+        new SelectListItem { Text = "HR", Value = "HR"},
+        new SelectListItem { Text = "Marketing", Value = "Marketing"},
+        new SelectListItem { Text = "Alumni", Value = "Alumni"},
+        new SelectListItem { Text = "Community Development", Value = "Community Development"},
+        new SelectListItem { Text = "Library", Value = "Library"},
+        new SelectListItem { Text = "Clinic", Value = "Clinic"},
+        new SelectListItem { Text = "Comproller", Value = "Comproller"},
+        new SelectListItem { Text = "Library", Value = "Library"},
+        new SelectListItem { Text = "Auditing", Value = "Auditing"},
+        new SelectListItem { Text = "School Registrar", Value = "School Registrar"},
+        new SelectListItem { Text = "Guidance", Value = "Guidance"},
+        new SelectListItem { Text = "Students Personel Services", Value = "Students Personel Services"},
+        new SelectListItem { Text = "Office of Student Affairs", Value = "Office of Student Affairs"},
+        new SelectListItem { Text = "Athletics", Value = "Athletics"},
+
+        }, new { @class = "form-control" })
+
                 @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.DropDownList("status", new List<SelectListItem>
+         { new SelectListItem { Text = "Working", Value = "Working", Selected=true},
+           new SelectListItem { Text = "Not Working", Value = "Not Working"},
+           }, new { @class = "form-control" })
+
                 @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group ">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <button type="submit" id="btnAlertMessage" class="btn btn-success" value="Save">
+                    Save
+                </button>
+                <input type="button" value="Cancel" class="btn btn-warning" onclick="window.open('https://localhost:44343/Equipments/','resizable=yes')" />
             </div>
         </div>
     </div>

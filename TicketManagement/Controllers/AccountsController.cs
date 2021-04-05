@@ -18,6 +18,7 @@ namespace TicketManagement.Controllers
             var uTypeList = new List<string>();
             //create a query on selecting all the users with usertyoe
             var uTypequery = from d in db.tblaccounts orderby d.usertype select d.usertype;
+
             //add the result of the query on the variable list
             uTypeList.AddRange(uTypequery.Distinct());
             //create the view bag of the resulet
@@ -84,7 +85,7 @@ namespace TicketManagement.Controllers
         //POST EDIT ACCOUNT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,LastName,FirstName,username,MiddleName,password,department,branch,usertype,status")] tblaccount editAccount)
+        public ActionResult Edit([Bind(Include = "LastName,FirstName,username,MiddleName,password,department,branch,usertype,status")] tblaccount editAccount)
         {
             if (ModelState.IsValid)
             {

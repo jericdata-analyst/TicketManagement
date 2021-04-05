@@ -112,16 +112,26 @@
 
                 @Html.DropDownList("department", new List<SelectListItem>
           { new SelectListItem { Text = "Select Department", Value = "", Selected=true},
-            new SelectListItem { Text = "Computer Science", Value = "Computer Science"},
-            new SelectListItem { Text = "Education", Value = "Education"},
-            new SelectListItem { Text = "Business Administrator", Value = "Business Administrator"},
-            new SelectListItem { Text = "BS Accountancy", Value = "BS Accountancy"},
-            new SelectListItem { Text = "Political Science", Value = "Political Science"},
-            new SelectListItem { Text = "Radtech", Value = "Radtech"},
-            new SelectListItem { Text = "AB Psychology", Value = "AB Psychology"},
-            new SelectListItem { Text = "BS Psychology", Value = "BS Psychology"},
-            new SelectListItem { Text = "Medtech", Value = "Medtech"},
-            new SelectListItem { Text = "Midwifery", Value = "Midwifery"},
+            new SelectListItem { Text = "IT Department", Value = "IT Department"},
+            new SelectListItem { Text = "Finance", Value = "Finance"},
+            new SelectListItem { Text = "Office of Non Academic Department", Value = "Office of the Administration"},
+            new SelectListItem { Text = "Registrar ", Value = "Registrar "},
+            new SelectListItem { Text = "Accounting ", Value = "Accounting "},
+            new SelectListItem { Text = "HR", Value = "HR"},
+            new SelectListItem { Text = "Marketing", Value = "Marketing"},
+            new SelectListItem { Text = "Alumni", Value = "Alumni"},
+            new SelectListItem { Text = "Community Development", Value = "Community Development"},
+            new SelectListItem { Text = "Library", Value = "Library"},
+            new SelectListItem { Text = "Clinic", Value = "Clinic"},
+            new SelectListItem { Text = "Comproller", Value = "Comproller"},
+            new SelectListItem { Text = "Library", Value = "Library"},
+            new SelectListItem { Text = "Auditing", Value = "Auditing"},
+            new SelectListItem { Text = "School Registrar", Value = "School Registrar"},
+            new SelectListItem { Text = "Guidance", Value = "Guidance"},
+            new SelectListItem { Text = "Students Personel Services", Value = "Students Personel Services"},
+            new SelectListItem { Text = "Office of Student Affairs", Value = "Office of Student Affairs"},
+            new SelectListItem { Text = "Athletics", Value = "Athletics"},
+
             }, new { @class = "form-control" })
 
                 @Html.ValidationMessageFor(model => model.department, "", new { @class = "text-danger" })
@@ -147,10 +157,13 @@
                 @Html.ValidationMessageFor(model => model.branch, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group input-group mb-3">
-            <div class="col-md-10">
-                <button type="submit" id="btnAlertMessage" class="btn btn-outline-success" value="Create" data-toggle="modal" data-target="#id">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <div class="col-md-10 ">
+                <button type="submit" id="btnAlertMessage" class="btn btn-success" value="Create" data-toggle="modal" data-target="">
                     Create
+                </button>
+                <button type="button" id="btnAlertMessage" class="btn btn-warning" value="Cancel" data-toggle="modal" data-target="https://localhost:44343/Equipments/">
+                    Cancel
                 </button>
             </div>
         </div>
@@ -188,10 +201,10 @@
 
     function change() {
         if (document.getElementById('usertype').value == 'Administrator')
-            document.getElementById("department").value = 'Computer Science';
+            document.getElementById("department").value = 'IT Department';
 
         else if (document.getElementById('usertype').value == 'Technical')
-            document.getElementById("department").value = 'Computer Science';
+            document.getElementById("department").value = 'IT Department';
 
         else if (document.getElementById('usertype').value == 'User')
             document.getElementById("department").value = '';

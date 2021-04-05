@@ -159,7 +159,6 @@
     <Compile Include="Models\tblequipment.cs">
       <DependentUpon>CS405Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblequipments.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +337,10 @@
     <Content Include="Views\Accounts\Create.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
     <Content Include="Views\Equipments\Index.cshtml" />
+    <Content Include="Views\Equipments\Create2.cshtml" />
+    <Content Include="Views\Equipments\Edit2.cshtml" />
+    <Content Include="Views\Equipments\Delete2.cshtml" />
+    <Content Include="Views\Equipments\Details2.cshtml" />
     <Content Include="Views\Equipments\Create.cshtml" />
     <Content Include="Views\Equipments\Edit.cshtml" />
     <Content Include="Views\Equipments\Delete.cshtml" />

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TicketManagement.Models;
 
@@ -18,26 +17,25 @@ namespace TicketManagement.Controllers
             //create a variable for all the list users;
             var uTypeList = new List<string>();
             //create a query on selecting all the users with usertyoe
-            var uTypequery = from d in db.tblequipments orderby d.SerialNumber select d.SerialNumber;
+            var uTypequery = from d in db.tblequipments orderby d.AssetNumber select d.AssetNumber;
 
             //add the result of the query on the variable list
             uTypeList.AddRange(uTypequery.Distinct());
-
             //create the view bag of the resulet
             ViewBag.SerialNumber = new SelectList(uTypeList);
             //select all the users
-            var accts = from m in db.tblequipments select m;
+            var eqpmnt = from m in db.tblequipments select m;
 
             //search all user
             if (!String.IsNullOrEmpty(txtsearch))
             {
-                accts = accts.Where(s => s.SerialNumber.Contains(txtsearch));
+                eqpmnt = eqpmnt.Where(s => s.AssetNumber.Contains(txtsearch));
             }
 
             //SWEETALERT
 
             //return all the user
-            return View(accts.ToList());
+            return View(eqpmnt.ToList());
         }
 
         //form get
@@ -53,9 +51,9 @@ namespace TicketManagement.Controllers
         {
             if (!ModelState.IsValid)
                 return View(newEquipment);
-            if (db.tblequipments.Any(k => k.SerialNumber == newEquipment.SerialNumber))
+            if (db.tblequipments.Any(k => k.AssetNumber == newEquipment.AssetNumber))
             {
-                ModelState.AddModelError("Serial Number", "Serial Number already exist");
+                ModelState.AddModelError("username", "Username already exist");
                 return View(newEquipment);
             }
             TempData["Msg"] = "Account Successfully Added";
@@ -91,7 +89,7 @@ namespace TicketManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                TempData["MsgEdit"] = "Equipment Successfully Updated";
+                TempData["MsgEdit"] = "Account Successfully Updated";
                 db.Entry(editEquipment).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -105,7 +103,7 @@ namespace TicketManagement.Controllers
         {
             using (CS405Entities1 db = new CS405Entities1())
             {
-                return View(db.tblequipments.Where(x => x.AssetNumber == id).FirstOrDefault());
+                return View(db.tblequipments.Where(x => x.equipmentsId == id).FirstOrDefault());
             }
         }
 
@@ -118,9 +116,9 @@ namespace TicketManagement.Controllers
                 //TODO: // CODE HERE
                 using (CS405Entities1 db = new CS405Entities1())
                 {
-                    tblequipment acc = db.tblequipments.Where(x => x.AssetNumber == id).FirstOrDefault();
+                    tblequipment item = db.tblequipments.Where(x => x.equipmentsId == id).FirstOrDefault();
                     TempData["MsgDelete"] = "Account Successfully Deleted";
-                    db.tblequipments.Remove(acc);
+                    db.tblequipments.Remove(item);
                     db.SaveChanges();
                 }
             }
@@ -135,7 +133,7 @@ namespace TicketManagement.Controllers
         {
             using (CS405Entities1 db = new CS405Entities1())
             {
-                return View(db.tblequipments.Where(x => x.AssetNumber == id).FirstOrDefault());
+                return View(db.tblequipments.Where(x => x.equipmentsId == id).FirstOrDefault());
             }
         }
     }

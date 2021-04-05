@@ -9,7 +9,6 @@
 
 namespace TicketManagement.Models
 {
-    using System.Web.Mvc;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -17,23 +16,30 @@ namespace TicketManagement.Models
 
     public partial class tblequipment
     {
+        
+        public int equipmentsId { get; set; }
         [Required]
-        public int AssetNumber { get; set; }
+        public string AssetNumber { get; set; }
         [Required]
         public string SerialNumber { get; set; }
         [Required]
         public string Type { get; set; }
         [Required]
         public string Manufacturer { get; set; }
+
         [Required]
+        [MaxLength(4, ErrorMessage = "Year should be at least 4 characters.")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Password should be numbers only.")]
         public string YearModel { get; set; }
+
         [Required]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         [Required]
         public string Branch { get; set; }
         [Required]
         public string Department { get; set; }
-        [Required]
+
         public string Status { get; set; }
     }
 }

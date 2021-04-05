@@ -22,9 +22,10 @@
         </EntityType>
         <EntityType Name="tblequipments">
           <Key>
-            <PropertyRef Name="AssetNumber" />
+            <PropertyRef Name="equipmentsId" />
           </Key>
-          <Property Name="AssetNumber" Type="int" Nullable="false" />
+          <Property Name="equipmentsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetNumber" Type="varchar" MaxLength="50" />
           <Property Name="SerialNumber" Type="varchar" MaxLength="50" />
           <Property Name="Type" Type="varchar" MaxLength="50" />
           <Property Name="Manufacturer" Type="varchar" MaxLength="50" />
@@ -63,9 +64,10 @@
         </EntityContainer>
         <EntityType Name="tblequipment">
           <Key>
-            <PropertyRef Name="AssetNumber" />
+            <PropertyRef Name="equipmentsId" />
           </Key>
-          <Property Name="AssetNumber" Type="Int32" Nullable="false" />
+          <Property Name="equipmentsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -109,6 +111,7 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
                 <ScalarProperty Name="AssetNumber" ColumnName="AssetNumber" />
+                <ScalarProperty Name="equipmentsId" ColumnName="equipmentsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

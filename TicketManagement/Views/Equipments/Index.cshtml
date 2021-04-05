@@ -33,26 +33,29 @@
         <table class="table table-striped">
             <tr class="table-primary">
                 <th scope="row">
+                    @Html.DisplayNameFor(model => model.AssetNumber)
+                </th>
+                <th scope="row">
                     @Html.DisplayNameFor(model => model.SerialNumber)
                 </th>
                 <th scope="row">
                     @Html.DisplayNameFor(model => model.Type)
                 </th>
-                <th scope="row">
-                    @Html.DisplayNameFor(model => model.Manufacturer)
-                </th>
-                <th scope="row">
-                    @Html.DisplayNameFor(model => model.YearModel)
-                </th>
-                <th scope="row">
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
+                @*<th scope="row">
+                        @Html.DisplayNameFor(model => model.Manufacturer)
+                    </th>
+                    <th scope="row">
+                        @Html.DisplayNameFor(model => model.YearModel)
+                    </th>*@
+                @*<th scope="row">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>*@
                 <th scope="row">
                     @Html.DisplayNameFor(model => model.Branch)
                 </th>
-                <th scope="row">
-                    @Html.DisplayNameFor(model => model.Department)
-                </th>
+                @*<th scope="row">
+                        @Html.DisplayNameFor(model => model.Department)
+                    </th>*@
                 <th scope="row">
                     @Html.DisplayNameFor(model => model.Status)
                 </th>
@@ -63,26 +66,29 @@
             {
                 <tr class="table-light">
                     <td>
+                        @Html.DisplayFor(modelItem => item.AssetNumber)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.SerialNumber)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Type)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Manufacturer)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.YearModel)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Manufacturer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.YearModel)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Branch)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Department)
-                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Department)
+                        </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Status)
                     </td>
@@ -90,9 +96,9 @@
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                            <input type="submit" class="btn btn-success btn-sm" value=" Edit  " onclick="location.href='@Url.Action("Edit", new { id = item.AssetNumber })'" /> &nbsp;
-                            <input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.AssetNumber })'" /> &nbsp;
-                            <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.AssetNumber })'" />
+                            <input type="submit" class="btn btn-success btn-sm" value=" Edit  " onclick="location.href='@Url.Action("Edit", new { id = item.equipmentsId })'" /> &nbsp;
+                            <input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.equipmentsId })'" /> &nbsp;
+                            <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.equipmentsId })'" />
 
                             @*@Html.ActionLink("Edit", "Edit", new { id = item.AssetNumber }) |*@
                             @*@Html.ActionLink("Details", "Details", new { id = item.AssetNumber }) |
@@ -103,7 +109,6 @@
             }
     </div>
     </table>
-
 
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
