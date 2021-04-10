@@ -9,44 +9,20 @@
 
 namespace TicketManagement.Models
 {
-    using System.Web.Mvc;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Diagnostics;
-
+    
     public partial class tblaccount
     {
-        [Required]
-        public string branch { get; set; }
-        [Required]
-        public string department { get; set; }
-        [Required]
-
-        public string FirstName { get; set; }
-        [Required]
         public int id { get; set; }
-        [Required]
-
-        public string LastName { get; set; }
-        [Required]
-
-        public string MiddleName { get; set; }
-
-        [Required]
-        [MinLength(8, ErrorMessage = "Password should be at least 8 characters.")]
-        [RegularExpression("^[a-zA-Z0-9_]+$", ErrorMessage = "Password should be composed of letters and numbers.")]
-        public string password { get; set; }
-        [Required]
-
-        public string status { get; set; }
-
-        [Required]
-        [UIHint("username")]
         public string username { get; set; }
-
-        [Required]
-
+        public string password { get; set; }
         public string usertype { get; set; }
+        public string status { get; set; }
+        public string department { get; set; }
+        public string branch { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
     }
 }

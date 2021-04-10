@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\EquipmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -157,6 +158,9 @@
     </Compile>
     <Compile Include="Models\tblaccountBase.cs" />
     <Compile Include="Models\tblequipment.cs">
+      <DependentUpon>CS405Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblticket.cs">
       <DependentUpon>CS405Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -330,21 +334,21 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Accounts\CreateDef.cshtml" />
     <Content Include="Views\Accounts\Edit.cshtml" />
     <Content Include="Views\Accounts\Delete.cshtml" />
     <Content Include="Views\Accounts\Details.cshtml" />
     <Content Include="Views\Accounts\Create.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
     <Content Include="Views\Equipments\Index.cshtml" />
-    <Content Include="Views\Equipments\Create2.cshtml" />
-    <Content Include="Views\Equipments\Edit2.cshtml" />
-    <Content Include="Views\Equipments\Delete2.cshtml" />
-    <Content Include="Views\Equipments\Details2.cshtml" />
     <Content Include="Views\Equipments\Create.cshtml" />
     <Content Include="Views\Equipments\Edit.cshtml" />
     <Content Include="Views\Equipments\Delete.cshtml" />
     <Content Include="Views\Equipments\Details.cshtml" />
+    <Content Include="Views\Tickets\Index.cshtml" />
+    <Content Include="Views\Tickets\Create.cshtml" />
+    <Content Include="Views\Tickets\Edit.cshtml" />
+    <Content Include="Views\Tickets\Delete.cshtml" />
+    <Content Include="Views\Tickets\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

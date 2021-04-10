@@ -105,6 +105,15 @@
                 @Html.DropDownList("Department", new List<SelectListItem>
       { new SelectListItem { Text = "Select Department", Value="", Selected=true},
         new SelectListItem { Text = "IT Department", Value = "IT Department"},
+        new SelectListItem { Text = "Education", Value = "Education"},
+        new SelectListItem { Text = "Business Administrator", Value = "Business Administrator"},
+        new SelectListItem { Text = "BS Accountancy", Value = "BS Accountancy"},
+        new SelectListItem { Text = "Political Science", Value = "Political Science"},
+        new SelectListItem { Text = "Radtech", Value = "Radtech"},
+        new SelectListItem { Text = "AB Psychology", Value = "AB Psychology"},
+        new SelectListItem { Text = "BS Psychology", Value = "BS Psychology"},
+        new SelectListItem { Text = "MedTech", Value = "MedTech"},
+        new SelectListItem { Text = "Midwifery", Value = "Midwifery"},
         new SelectListItem { Text = "Finance", Value = "Finance"},
         new SelectListItem { Text = "Office of Non Academic Department", Value = "Office of the Administration"},
         new SelectListItem { Text = "Registrar ", Value = "Registrar "},
@@ -132,7 +141,16 @@
 
         <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+
+            <div class="col-md-10 " style="display:none">
+
+                @Html.DropDownList("Status", new List<SelectListItem>
+         {
+           new SelectListItem { Text = "Working" ,Value = "Working"},
+           }, new { @class = "form-control" })
+            </div>
+
+            <div class="col-md-10 " >
 
                 @Html.DropDownList("displaystatus", new List<SelectListItem>
         {

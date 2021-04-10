@@ -1,0 +1,91 @@
+﻿@model TicketManagement.Models.tblticket
+
+@{
+    ViewBag.Title = "Details";
+}
+<br />
+<br />
+<br />
+<br />
+<h2>Ticket Details</h2>
+<hr />
+<div>
+
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TicketNumber)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TicketNumber)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Problem)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Problem)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.AssignedTo)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.AssignedTo)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ApprovedBy)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ApprovedBy)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ticketId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

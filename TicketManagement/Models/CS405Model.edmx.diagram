@@ -7,6 +7,7 @@
       <Diagram DiagramId="e3e15f56b053445db4d524a975d15c1d" Name="Diagram1">
         <EntityTypeShape EntityType="CS405Model.tblaccount" Width="1.5" PointX="0.875" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CS405Model.tblequipment" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CS405Model.tblticket" Width="1.5" PointX="5.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

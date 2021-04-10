@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
-using System.Data.Entity;
 using TicketManagement.Models;
 
 namespace TicketManagement.Controllers
 {
-    public class EquipmentsController : Controller
+    public class TicketsController : Controller
     {
-        // GET: Equipments
+        // GET: Tickets
         private CS405Entities1 db = new CS405Entities1();
 
         public ActionResult Index(string txtsearch)
@@ -18,28 +19,28 @@ namespace TicketManagement.Controllers
             //create a variable for all the list users;
             var uTypeList = new List<string>();
             //create a query on selecting all the users with usertyoe
-            var uTypequery = from d in db.tblequipments orderby d.AssetNumber select d.AssetNumber;
+            var uTypequery = from d in db.tbltickets orderby d.Problem select d.Problem;
 
             //add the result of the query on the variable list
             uTypeList.AddRange(uTypequery.Distinct());
+
             //create the view bag of the resulet
-            ViewBag.SerialNumber = new SelectList(uTypeList);
+            ViewBag.TicketNumber = new SelectList(uTypeList);
             //select all the users
-            var eqpmnt = from m in db.tblequipments select m;
+            var accts = from m in db.tbltickets select m;
 
             //search all user
             if (!String.IsNullOrEmpty(txtsearch))
             {
-                eqpmnt = eqpmnt.Where(s => s.AssetNumber.Contains(txtsearch));
+                accts = accts.Where(s => s.Status.Contains(txtsearch));
             }
 
             //SWEETALERT
 
             //return all the user
-            return View(eqpmnt.ToList());
+            return View(accts.ToList());
         }
 
-        //form get
         public ActionResult Create()
         {
             return View();
@@ -48,52 +49,56 @@ namespace TicketManagement.Controllers
         //form post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(tblequipment newEquipment)
+        public ActionResult Create(tblticket newTicket)
         {
             if (!ModelState.IsValid)
-                return View(newEquipment);
-            if (db.tblequipments.Any(k => k.AssetNumber == newEquipment.AssetNumber))
+                return View(newTicket);
+            if (db.tbltickets.Any(k => k.Status == newTicket.Status))
             {
-                ModelState.AddModelError("AssetNumber", "Asset Number already exist");
-                ModelState.AddModelError("SerialNumber", "Serial Number already exist");
-                return View(newEquipment);
+                //ModelState.AddModelError("username", "Username already exist");
+                return View(newTicket);
             }
             TempData["Msg"] = "Account Successfully Added";
-            db.tblequipments.Add(newEquipment);
+            db.tbltickets.Add(newTicket);
             db.SaveChanges();
             return RedirectToAction("Index");
+
+            //else
+            //{
+            //    return View(newAccount);
+            //}
         }
 
-        //form get
+        //formget
         public ActionResult Edit(int? ID)
+
         {
             if (ID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tblequipment editEquipment = db.tblequipments.Find(ID);
-            if (editEquipment == null)
+            tblticket editTicket = db.tbltickets.Find(ID);
+            if (editTicket == null)
             {
                 return HttpNotFound();
             }
-            return View(editEquipment);
+            return View(editTicket);
         }
 
         //POST EDIT ACCOUNT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "equiptmentsId,AssetNumber,SerialNumber,Type,Manufacturer,YearModel,Description,Branch,Department,Status")] tblequipment editEquipment)
+        public ActionResult Edit([Bind(Include = "TicketNumber,Problem,Details,Status,Date,Time,CreatedBy,AssignedTo,ApprovedBy")] tblticket editTicket)
         {
             if (ModelState.IsValid)
             {
-                TempData["MsgEdit"] = "Equipments Successfully Updated";
-
-                db.Entry(editEquipment).State = EntityState.Modified;
+                TempData["MsgEdit"] = "Ticket Successfully Updated";
+                db.Entry(editTicket).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(editEquipment);
+            return View(editTicket);
         }
 
         //Get: /customer/delete
@@ -101,7 +106,7 @@ namespace TicketManagement.Controllers
         {
             using (CS405Entities1 db = new CS405Entities1())
             {
-                return View(db.tblequipments.Where(x => x.equipmentsId == id).FirstOrDefault());
+                return View(db.tbltickets.Where(x => x.ticketId == id).FirstOrDefault());
             }
         }
 
@@ -114,9 +119,9 @@ namespace TicketManagement.Controllers
                 //TODO: // CODE HERE
                 using (CS405Entities1 db = new CS405Entities1())
                 {
-                    tblequipment item = db.tblequipments.Where(x => x.equipmentsId == id).FirstOrDefault();
-                    TempData["MsgDelete"] = "Account Successfully Deleted";
-                    db.tblequipments.Remove(item);
+                    tblticket acc = db.tbltickets.Where(x => x.ticketId == id).FirstOrDefault();
+                    TempData["MsgDelete"] = "Ticket Successfully Deleted";
+                    db.tbltickets.Remove(acc);
                     db.SaveChanges();
                 }
             }
@@ -131,7 +136,7 @@ namespace TicketManagement.Controllers
         {
             using (CS405Entities1 db = new CS405Entities1())
             {
-                return View(db.tblequipments.Where(x => x.equipmentsId == id).FirstOrDefault());
+                return View(db.tbltickets.Where(x => x.ticketId == id).FirstOrDefault());
             }
         }
     }

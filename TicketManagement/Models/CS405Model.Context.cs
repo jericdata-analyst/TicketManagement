@@ -27,5 +27,6 @@ namespace TicketManagement.Models
     
         public virtual DbSet<tblaccount> tblaccounts { get; set; }
         public virtual DbSet<tblequipment> tblequipments { get; set; }
+        public virtual DbSet<tblticket> tbltickets { get; set; }
     }
 }

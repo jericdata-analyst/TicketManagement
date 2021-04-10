@@ -1,0 +1,114 @@
+﻿@model TicketManagement.Models.tblticket
+
+@{
+    ViewBag.Title = "Delete";
+}
+<br />
+<br />
+<br />
+<br />
+<h2>Delete</h2>
+
+<div class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4 class="alert-heading">Warning!</h4>
+    <p class="mb-0">Are you sure you want to delete this? <a href="#" class="alert-link"></a>.</p>
+</div>
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TicketNumber)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TicketNumber)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Problem)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Problem)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.AssignedTo)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.AssignedTo)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ApprovedBy)
+        </dt>
+
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ApprovedBy)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+
+            <div class="col-sm-9">
+
+                <button type="submit" class="btn btn-danger" id="btnAlertMessage" value="Delete" data-toggle="modal" data-target="#id">
+                    Delete
+                </button>
+                <br>
+                <br>
+            </div>
+            <div class="">
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+    }
+</div>
