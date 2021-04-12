@@ -11,7 +11,7 @@ namespace TicketManagement.Controllers
     public class EquipmentsController : Controller
     {
         // GET: Equipments
-        private CS405Entities1 db = new CS405Entities1();
+        private CS405Entities2 db = new CS405Entities2();
 
         public ActionResult Index(string txtsearch)
         {
@@ -82,7 +82,7 @@ namespace TicketManagement.Controllers
         //POST EDIT ACCOUNT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "equiptmentsId,AssetNumber,SerialNumber,Type,Manufacturer,YearModel,Description,Branch,Department,Status")] tblequipment editEquipment)
+        public ActionResult Edit([Bind(Include = "AssetNumber,SerialNumber,Type,Manufacturer,YearModel,Description,Branch,Department,EquipmentStatus")] tblequipment editEquipment)
         {
             if (ModelState.IsValid)
             {
@@ -99,9 +99,9 @@ namespace TicketManagement.Controllers
         //Get: /customer/delete
         public ActionResult Delete(int id)
         {
-            using (CS405Entities1 db = new CS405Entities1())
+            using (CS405Entities2 db = new CS405Entities2())
             {
-                return View(db.tblequipments.Where(x => x.equipmentsId == id).FirstOrDefault());
+                return View(db.tblequipments.Where(x => x.equipId == id).FirstOrDefault());
             }
         }
 
@@ -112,9 +112,9 @@ namespace TicketManagement.Controllers
             try
             {
                 //TODO: // CODE HERE
-                using (CS405Entities1 db = new CS405Entities1())
+                using (CS405Entities2 db = new CS405Entities2())
                 {
-                    tblequipment item = db.tblequipments.Where(x => x.equipmentsId == id).FirstOrDefault();
+                    tblequipment item = db.tblequipments.Where(x => x.equipId == id).FirstOrDefault();
                     TempData["MsgDelete"] = "Account Successfully Deleted";
                     db.tblequipments.Remove(item);
                     db.SaveChanges();
@@ -129,9 +129,9 @@ namespace TicketManagement.Controllers
         //GET: /Accounts/
         public ActionResult Details(int id)
         {
-            using (CS405Entities1 db = new CS405Entities1())
+            using (CS405Entities2 db = new CS405Entities2())
             {
-                return View(db.tblequipments.Where(x => x.equipmentsId == id).FirstOrDefault());
+                return View(db.tblequipments.Where(x => x.equipId == id).FirstOrDefault());
             }
         }
     }

@@ -14,7 +14,7 @@ namespace TicketManagement.Models
     
     public partial class tblequipment
     {
-        public int equipmentsId { get; set; }
+        public int equipId { get; set; }
         public string AssetNumber { get; set; }
         public string SerialNumber { get; set; }
         public string Type { get; set; }
@@ -23,6 +23,6 @@ namespace TicketManagement.Models
         public string Description { get; set; }
         public string Branch { get; set; }
         public string Department { get; set; }
-        public string Status { get; set; }
+        public string EquipmentStatus { get; set; }
     }
 }

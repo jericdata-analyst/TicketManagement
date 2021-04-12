@@ -13,10 +13,10 @@ namespace TicketManagement.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CS405Entities1 : DbContext
+    public partial class CS405Entities2 : DbContext
     {
-        public CS405Entities1()
-            : base("name=CS405Entities1")
+        public CS405Entities2()
+            : base("name=CS405Entities2")
         {
         }
     
@@ -25,8 +25,8 @@ namespace TicketManagement.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tblticket> tbltickets { get; set; }
         public virtual DbSet<tblaccount> tblaccounts { get; set; }
         public virtual DbSet<tblequipment> tblequipments { get; set; }
-        public virtual DbSet<tblticket> tbltickets { get; set; }
     }
 }

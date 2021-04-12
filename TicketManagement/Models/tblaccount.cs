@@ -19,10 +19,10 @@ namespace TicketManagement.Models
         public string password { get; set; }
         public string usertype { get; set; }
         public string status { get; set; }
-        public string department { get; set; }
-        public string branch { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
+        public string department { get; set; }
+        public string branch { get; set; }
     }
 }

@@ -14,7 +14,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.equipmentsId)
+    @Html.HiddenFor(model => model.equipId)
     <div class="form-horizontal">
         <hr />
 
@@ -140,16 +140,16 @@
         </div>
 
         <div class="form-group input-group mb-3">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EquipmentStatus, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                @Html.DropDownList("status", new List<SelectListItem>
+                @Html.DropDownList("EquipmentStatus", new List<SelectListItem>
          { new SelectListItem { Text = "Working", Value = "Working", Selected=true},
            new SelectListItem { Text = "On Repair", Value = "On Repair"},
            new SelectListItem { Text = "Retired", Value = "Retired"},
            }, new { @class = "form-control" })
 
-                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.EquipmentStatus, "", new { @class = "text-danger" })
             </div>
         </div>
 

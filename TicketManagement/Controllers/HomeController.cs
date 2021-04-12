@@ -5,7 +5,7 @@ namespace TicketManagement.Controllers
 {
     public class HomeController : Controller
     {
-        private CS405Entities1 db = new CS405Entities1();
+        private CS405Entities2 db = new CS405Entities2();
 
         public ActionResult Index()
         {

@@ -9,22 +9,22 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="usertype" Type="varchar" MaxLength="20" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" />
           <Property Name="MiddleName" Type="varchar" MaxLength="50" />
-          <Property Name="username" Type="varchar" MaxLength="50" />
-          <Property Name="password" Type="varchar" MaxLength="50" />
           <Property Name="department" Type="varchar" MaxLength="50" />
           <Property Name="branch" Type="varchar" MaxLength="50" />
-          <Property Name="usertype" Type="varchar" MaxLength="20" />
-          <Property Name="status" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="tblequipments">
           <Key>
-            <PropertyRef Name="equipmentsId" />
+            <PropertyRef Name="equipId" />
           </Key>
-          <Property Name="equipmentsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="equipId" Type="int" Nullable="false" />
           <Property Name="AssetNumber" Type="varchar" MaxLength="50" />
           <Property Name="SerialNumber" Type="varchar" MaxLength="50" />
           <Property Name="Type" Type="varchar" MaxLength="50" />
@@ -33,13 +33,13 @@
           <Property Name="Description" Type="varchar" MaxLength="50" />
           <Property Name="Branch" Type="varchar" MaxLength="50" />
           <Property Name="Department" Type="varchar" MaxLength="50" />
-          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="EquipmentStatus" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbltickets">
           <Key>
-            <PropertyRef Name="ticketId" />
+            <PropertyRef Name="TicketId" />
           </Key>
-          <Property Name="ticketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TicketId" Type="int" Nullable="false" />
           <Property Name="TicketNumber" Type="varchar" MaxLength="50" />
           <Property Name="Problem" Type="varchar" MaxLength="50" />
           <Property Name="Details" Type="varchar" MaxLength="50" />
@@ -59,47 +59,17 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CS405Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="tblaccount">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="usertype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityContainer Name="CS405Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CS405Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbltickets" EntityType="CS405Model.tblticket" />
           <EntitySet Name="tblaccounts" EntityType="CS405Model.tblaccount" />
           <EntitySet Name="tblequipments" EntityType="CS405Model.tblequipment" />
-          <EntitySet Name="tbltickets" EntityType="CS405Model.tblticket" />
         </EntityContainer>
-        <EntityType Name="tblequipment">
-          <Key>
-            <PropertyRef Name="equipmentsId" />
-          </Key>
-          <Property Name="equipmentsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AssetNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="YearModel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="tblticket">
           <Key>
-            <PropertyRef Name="ticketId" />
+            <PropertyRef Name="TicketId" />
           </Key>
-          <Property Name="ticketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TicketNumber" Type="String" Nullable="true" />
+          <Property Name="TicketId" Type="Int32" Nullable="false" />
+          <Property Name="TicketNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Problem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Details" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -109,44 +79,42 @@
           <Property Name="AssignedTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ApprovedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="tblaccount">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usertype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblequipment">
+          <Key>
+            <PropertyRef Name="equipId" />
+          </Key>
+          <Property Name="equipId" Type="Int32" Nullable="false" />
+          <Property Name="AssetNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YearModel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EquipmentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CS405ModelStoreContainer" CdmEntityContainer="CS405Entities1">
-          <EntitySetMapping Name="tblaccounts">
-            <EntityTypeMapping TypeName="CS405Model.tblaccount">
-              <MappingFragment StoreEntitySet="tblaccounts">
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="branch" ColumnName="branch" />
-                <ScalarProperty Name="department" ColumnName="department" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="usertype" ColumnName="usertype" />
-                <ScalarProperty Name="status" ColumnName="status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblequipments">
-            <EntityTypeMapping TypeName="CS405Model.tblequipment">
-              <MappingFragment StoreEntitySet="tblequipments">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="Branch" ColumnName="Branch" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="YearModel" ColumnName="YearModel" />
-                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
-                <ScalarProperty Name="AssetNumber" ColumnName="AssetNumber" />
-                <ScalarProperty Name="equipmentsId" ColumnName="equipmentsId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="CS405ModelStoreContainer" CdmEntityContainer="CS405Entities2">
           <EntitySetMapping Name="tbltickets">
             <EntityTypeMapping TypeName="CS405Model.tblticket">
               <MappingFragment StoreEntitySet="tbltickets">
@@ -159,7 +127,39 @@
                 <ScalarProperty Name="Details" ColumnName="Details" />
                 <ScalarProperty Name="Problem" ColumnName="Problem" />
                 <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
-                <ScalarProperty Name="ticketId" ColumnName="ticketId" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblaccounts">
+            <EntityTypeMapping TypeName="CS405Model.tblaccount">
+              <MappingFragment StoreEntitySet="tblaccounts">
+                <ScalarProperty Name="branch" ColumnName="branch" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="usertype" ColumnName="usertype" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblequipments">
+            <EntityTypeMapping TypeName="CS405Model.tblequipment">
+              <MappingFragment StoreEntitySet="tblequipments">
+                <ScalarProperty Name="EquipmentStatus" ColumnName="EquipmentStatus" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="YearModel" ColumnName="YearModel" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="AssetNumber" ColumnName="AssetNumber" />
+                <ScalarProperty Name="equipId" ColumnName="equipId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

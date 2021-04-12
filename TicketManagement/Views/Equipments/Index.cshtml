@@ -57,7 +57,7 @@
                         @Html.DisplayNameFor(model => model.Department)
                     </th>*@
                 <th scope="row">
-                    @Html.DisplayNameFor(model => model.Status)
+                    @Html.DisplayNameFor(model => model.EquipmentStatus)
                 </th>
                 <th scope="row"></th>
             </tr>
@@ -90,15 +90,15 @@
                             @Html.DisplayFor(modelItem => item.Department)
                         </td>*@
                     <td>
-                        @Html.DisplayFor(modelItem => item.Status)
+                        @Html.DisplayFor(modelItem => item.EquipmentStatus)
                     </td>
 
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                            <input type="submit" class="btn btn-success btn-sm" value=" Edit  " onclick="location.href='@Url.Action("Edit", new { id = item.equipmentsId })'" /> &nbsp;
-                            <input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.equipmentsId })'" /> &nbsp;
-                            <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.equipmentsId })'" />
+                            <input type="submit" class="btn btn-success btn-sm" value=" Edit  " onclick="location.href='@Url.Action("Edit", new { id = item.equipId })'" /> &nbsp;
+                            <input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.equipId })'" /> &nbsp;
+                            <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.equipId })'" />
 
                             @*@Html.ActionLink("Edit", "Edit", new { id = item.AssetNumber }) |*@
                             @*@Html.ActionLink("Details", "Details", new { id = item.AssetNumber }) |

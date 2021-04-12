@@ -12,7 +12,7 @@ namespace TicketManagement.Controllers
     public class TicketsController : Controller
     {
         // GET: Tickets
-        private CS405Entities1 db = new CS405Entities1();
+        private CS405Entities2 db = new CS405Entities2();
 
         public ActionResult Index(string txtsearch)
         {
@@ -104,9 +104,9 @@ namespace TicketManagement.Controllers
         //Get: /customer/delete
         public ActionResult Delete(int id)
         {
-            using (CS405Entities1 db = new CS405Entities1())
+            using (CS405Entities2 db = new CS405Entities2())
             {
-                return View(db.tbltickets.Where(x => x.ticketId == id).FirstOrDefault());
+                return View(db.tbltickets.Where(x => x.TicketId == id).FirstOrDefault());
             }
         }
 
@@ -117,9 +117,9 @@ namespace TicketManagement.Controllers
             try
             {
                 //TODO: // CODE HERE
-                using (CS405Entities1 db = new CS405Entities1())
+                using (CS405Entities2 db = new CS405Entities2())
                 {
-                    tblticket acc = db.tbltickets.Where(x => x.ticketId == id).FirstOrDefault();
+                    tblticket acc = db.tbltickets.Where(x => x.TicketId == id).FirstOrDefault();
                     TempData["MsgDelete"] = "Ticket Successfully Deleted";
                     db.tbltickets.Remove(acc);
                     db.SaveChanges();
@@ -134,9 +134,9 @@ namespace TicketManagement.Controllers
         //GET: /Accounts/
         public ActionResult Details(int id)
         {
-            using (CS405Entities1 db = new CS405Entities1())
+            using (CS405Entities2 db = new CS405Entities2())
             {
-                return View(db.tbltickets.Where(x => x.ticketId == id).FirstOrDefault());
+                return View(db.tbltickets.Where(x => x.TicketId == id).FirstOrDefault());
             }
         }
     }

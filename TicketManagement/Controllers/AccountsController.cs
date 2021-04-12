@@ -10,7 +10,7 @@ namespace TicketManagement.Controllers
     public class AccountsController : Controller
     {
         // GET: Accounts
-        private CS405Entities1 db = new CS405Entities1();
+        private CS405Entities2 db = new CS405Entities2();
 
         public ActionResult Index(string txtsearch)
         {
@@ -101,7 +101,7 @@ namespace TicketManagement.Controllers
         //Get: /customer/delete
         public ActionResult Delete(int id)
         {
-            using (CS405Entities1 db = new CS405Entities1())
+            using (CS405Entities2 db = new CS405Entities2())
             {
                 return View(db.tblaccounts.Where(x => x.id == id).FirstOrDefault());
             }
@@ -114,7 +114,7 @@ namespace TicketManagement.Controllers
             try
             {
                 //TODO: // CODE HERE
-                using (CS405Entities1 db = new CS405Entities1())
+                using (CS405Entities2 db = new CS405Entities2())
                 {
                     tblaccount acc = db.tblaccounts.Where(x => x.id == id).FirstOrDefault();
                     TempData["MsgDelete"] = "Account Successfully Deleted";
@@ -131,7 +131,7 @@ namespace TicketManagement.Controllers
         //GET: /Accounts/
         public ActionResult Details(int id)
         {
-            using (CS405Entities1 db = new CS405Entities1())
+            using (CS405Entities2 db = new CS405Entities2())
             {
                 return View(db.tblaccounts.Where(x => x.id == id).FirstOrDefault());
             }

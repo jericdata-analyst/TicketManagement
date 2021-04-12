@@ -28,105 +28,106 @@
 
 }
     </p>
-<div class="position-relative">
+    <div class="position-relative">
 
-    <table class="table table-striped">
-        <tr class="table-primary">
-            <th scope="row">
-                @Html.DisplayNameFor(model => model.TicketNumber)
-            </th>
-            <th scope="row">
-                @Html.DisplayNameFor(model => model.Problem)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Details)
-                </th>*@
-            <th scope="row">
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th scope="row">
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th scope="row">
-                @Html.DisplayNameFor(model => model.Time)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.CreatedBy)
+        <table class="table table-striped">
+            <tr class="table-primary">
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.TicketNumber)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssignedTo)
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.Problem)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ApprovedBy)
-                </th>*@
-            <th scope="row"></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr class="table-light">
-                <td>
-                    @Html.DisplayFor(modelItem => item.TicketNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Problem)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Details)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Time)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.CreatedBy)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AssignedTo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ApprovedBy)
-                    </td>*@
-                <td>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
-                        <input type="submit" class="btn btn-success btn-sm" value=" Edit  " onclick="location.href='@Url.Action("Edit", new { id = item.ticketId })'" /> &nbsp;
-                        <input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.ticketId })'" /> &nbsp;
-                        <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.ticketId })'" />
-
-                        @*@Html.ActionLink("Edit", "Edit", new { id = item.id })
-                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.id })*@
-                    </div>
-                </td>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Details)
+                    </th>*@
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.Time)
+                </th>
+              
+                @*<th>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssignedTo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ApprovedBy)
+                    </th>*@
+                <th scope="row"></th>
             </tr>
-        }
-    </table>
 
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group mr-2" role="group" aria-label="First group">
-            <button type="button" class="btn btn-secondary">1</button>
-            <button type="button" class="btn btn-secondary">2</button>
-            <button type="button" class="btn btn-secondary">3</button>
-            <button type="button" class="btn btn-secondary">4</button>
-        </div>
-        <div class="btn-group mr-2" role="group" aria-label="Second group">
-            <button type="button" class="btn btn-secondary">5</button>
-            <button type="button" class="btn btn-secondary">6</button>
-            <button type="button" class="btn btn-secondary">7</button>
-        </div>
-        <div class="btn-group" role="group" aria-label="Third group">
-            <button type="button" value="Alert Message" name="alertMessage" id="btnAlertMessage" class="btn btn-secondary">ALERT</button>
-        </div>
-    </div>
+            @foreach (var item in Model)
+            {
+                <tr class="table-light">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Problem)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Details)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Time)
+                    </td>
+                  
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssignedTo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApprovedBy)
+                        </td>*@
+                    <td>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
+                            <input type="submit" class="btn btn-success btn-sm" value=" Edit  " onclick="location.href='@Url.Action("Edit", new { id = item.TicketId })'" /> &nbsp;
+                            <input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.TicketId })'" /> &nbsp;
+                            <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.TicketId })'" />
 
-    <script type="text/javascript">
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.id })
+                                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-secondary">1</button>
+                <button type="button" class="btn btn-secondary">2</button>
+                <button type="button" class="btn btn-secondary">3</button>
+                <button type="button" class="btn btn-secondary">4</button>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Second group">
+                <button type="button" class="btn btn-secondary">5</button>
+                <button type="button" class="btn btn-secondary">6</button>
+                <button type="button" class="btn btn-secondary">7</button>
+            </div>
+            <div class="btn-group" role="group" aria-label="Third group">
+                <button type="button" value="Alert Message" name="alertMessage" id="btnAlertMessage" class="btn btn-secondary">ALERT</button>
+            </div>
+        </div>
+
+        <script type="text/javascript">
 
         ////read viewbagdata
         //$(document).ready(function () {
@@ -164,4 +165,4 @@
                 'success');
 
         }
-    </script>
+        </script>

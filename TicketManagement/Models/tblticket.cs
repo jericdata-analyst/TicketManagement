@@ -11,31 +11,18 @@ namespace TicketManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tblticket
     {
-        public int ticketId { get; set; }
-
-   
-
+        public int TicketId { get; set; }
         public string TicketNumber { get; set; }
-
         public string Problem { get; set; }
-
         public string Details { get; set; }
-
         public string Status { get; set; }
-
         public string Date { get; set; }
-
         public string Time { get; set; }
-
         public string CreatedBy { get; set; }
-
         public string AssignedTo { get; set; }
-
         public string ApprovedBy { get; set; }
     }
 }
