@@ -82,13 +82,17 @@ namespace TicketManagement.Controllers
         //POST EDIT ACCOUNT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AssetNumber,SerialNumber,Type,Manufacturer,YearModel,Description,Branch,Department,EquipmentStatus")] tblequipment editEquipment)
+        public ActionResult Edit([Bind(Include = "AssetNumber,SerialNumber,Type,Manufacturer,YearModel,Description,Branch,Department,EquipmentStatus")] tblequipment editEquipment, int id)
         {
             if (ModelState.IsValid)
             {
                 TempData["MsgEdit"] = "Equipments Successfully Updated";
 
-                db.Entry(editEquipment).State = EntityState.Modified;
+                db.Entry(editEquipment).State = EntityState.Added;
+
+                tblequipment acc = db.tblequipments.Where(x => x.equipId == id).FirstOrDefault();
+                db.tblequipments.Remove(acc);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

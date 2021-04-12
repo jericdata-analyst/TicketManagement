@@ -53,12 +53,12 @@ namespace TicketManagement.Controllers
         {
             if (!ModelState.IsValid)
                 return View(newTicket);
-            if (db.tbltickets.Any(k => k.Status == newTicket.Status))
+            if (db.tbltickets.Any(k => k.TicketNumber == newTicket.TicketNumber))
             {
-                //ModelState.AddModelError("username", "Username already exist");
+                ModelState.AddModelError("TicketNumber", "Username already exist");
                 return View(newTicket);
             }
-            TempData["Msg"] = "Account Successfully Added";
+            TempData["Msg"] = "Ticket Successfully Added";
             db.tbltickets.Add(newTicket);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -88,12 +88,16 @@ namespace TicketManagement.Controllers
         //POST EDIT ACCOUNT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TicketNumber,Problem,Details,Status,Date,Time,CreatedBy,AssignedTo,ApprovedBy")] tblticket editTicket)
+        public ActionResult Edit([Bind(Include = "TicketId,TicketNumber,Problem,Details,Status,Date,Time,CreatedBy,AssignedTo,ApprovedBy")] tblticket editTicket, int id)
         {
             if (ModelState.IsValid)
             {
                 TempData["MsgEdit"] = "Ticket Successfully Updated";
-                db.Entry(editTicket).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(editTicket).State = System.Data.Entity.EntityState.Added;
+
+                tblticket acc = db.tbltickets.Where(x => x.TicketId == id).FirstOrDefault();
+                db.tbltickets.Remove(acc);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

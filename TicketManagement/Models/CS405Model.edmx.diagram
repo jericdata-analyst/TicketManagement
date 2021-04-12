@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f39fbacfcf1342ee8cf70f658afe76f5" Name="Diagram1">
-        <EntityTypeShape EntityType="CS405Model.tblticket" Width="1.5" PointX="3.75" PointY="3.25" />
-        <EntityTypeShape EntityType="CS405Model.tblaccount" Width="1.5" PointX="0.5" PointY="0.5" />
-        <EntityTypeShape EntityType="CS405Model.tblequipment" Width="1.5" PointX="2.125" PointY="1.25" />
+        <EntityTypeShape EntityType="CS405Model.tblaccount" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CS405Model.tblequipment" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CS405Model.tblticket" Width="1.5" PointX="4.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

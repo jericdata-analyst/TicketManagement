@@ -85,12 +85,16 @@ namespace TicketManagement.Controllers
         //POST EDIT ACCOUNT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LastName,FirstName,username,MiddleName,password,department,branch,usertype,status")] tblaccount editAccount)
+        public ActionResult Edit([Bind(Include = "LastName,FirstName,username,MiddleName,password,department,branch,usertype,status")] tblaccount editAccount, int id)
         {
             if (ModelState.IsValid)
             {
                 TempData["MsgEdit"] = "Account Successfully Updated";
-                db.Entry(editAccount).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(editAccount).State = System.Data.Entity.EntityState.Added;
+
+                tblaccount acc = db.tblaccounts.Where(x => x.id == id).FirstOrDefault();
+                db.tblaccounts.Remove(acc);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

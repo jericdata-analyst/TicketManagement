@@ -25,8 +25,8 @@ namespace TicketManagement.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tblticket> tbltickets { get; set; }
         public virtual DbSet<tblaccount> tblaccounts { get; set; }
         public virtual DbSet<tblequipment> tblequipments { get; set; }
+        public virtual DbSet<tblticket> tbltickets { get; set; }
     }
 }

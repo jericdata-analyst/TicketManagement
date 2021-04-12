@@ -107,17 +107,16 @@
             <button type="submit" id="btnAlertMessage" class="btn btn-success" value="Create" data-toggle="modal" data-target="">
                 Create
             </button>
-            <button type="button" id="btnAlertMessage" class="btn btn-warning" value="Cancel" data-toggle="modal" data-target="https://localhost:44343/Tickets/">
-                Cancel
-            </button>
+            <input type="button" value="Cancel" class="btn btn-warning" onclick="window.open('https://localhost:44343/Tickets/','resizable=yes')" />
         </div>
-    </div>
+        </div>
+    
 
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

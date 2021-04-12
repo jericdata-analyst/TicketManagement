@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="50" />
           <Property Name="password" Type="varchar" MaxLength="50" />
           <Property Name="usertype" Type="varchar" MaxLength="20" />
@@ -24,7 +24,7 @@
           <Key>
             <PropertyRef Name="equipId" />
           </Key>
-          <Property Name="equipId" Type="int" Nullable="false" />
+          <Property Name="equipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AssetNumber" Type="varchar" MaxLength="50" />
           <Property Name="SerialNumber" Type="varchar" MaxLength="50" />
           <Property Name="Type" Type="varchar" MaxLength="50" />
@@ -39,7 +39,7 @@
           <Key>
             <PropertyRef Name="TicketId" />
           </Key>
-          <Property Name="TicketId" Type="int" Nullable="false" />
+          <Property Name="TicketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TicketNumber" Type="varchar" MaxLength="50" />
           <Property Name="Problem" Type="varchar" MaxLength="50" />
           <Property Name="Details" Type="varchar" MaxLength="50" />
@@ -60,30 +60,15 @@
     <edmx:ConceptualModels>
       <Schema Namespace="CS405Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="CS405Entities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tbltickets" EntityType="CS405Model.tblticket" />
           <EntitySet Name="tblaccounts" EntityType="CS405Model.tblaccount" />
           <EntitySet Name="tblequipments" EntityType="CS405Model.tblequipment" />
+          <EntitySet Name="tbltickets" EntityType="CS405Model.tblticket" />
         </EntityContainer>
-        <EntityType Name="tblticket">
-          <Key>
-            <PropertyRef Name="TicketId" />
-          </Key>
-          <Property Name="TicketId" Type="Int32" Nullable="false" />
-          <Property Name="TicketNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Problem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Details" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AssignedTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ApprovedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="tblaccount">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="usertype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
@@ -98,7 +83,7 @@
           <Key>
             <PropertyRef Name="equipId" />
           </Key>
-          <Property Name="equipId" Type="Int32" Nullable="false" />
+          <Property Name="equipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AssetNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -109,28 +94,27 @@
           <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EquipmentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="tblticket">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TicketNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Problem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AssignedTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApprovedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CS405ModelStoreContainer" CdmEntityContainer="CS405Entities2">
-          <EntitySetMapping Name="tbltickets">
-            <EntityTypeMapping TypeName="CS405Model.tblticket">
-              <MappingFragment StoreEntitySet="tbltickets">
-                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
-                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Details" ColumnName="Details" />
-                <ScalarProperty Name="Problem" ColumnName="Problem" />
-                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
-                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblaccounts">
             <EntityTypeMapping TypeName="CS405Model.tblaccount">
               <MappingFragment StoreEntitySet="tblaccounts">
@@ -160,6 +144,22 @@
                 <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
                 <ScalarProperty Name="AssetNumber" ColumnName="AssetNumber" />
                 <ScalarProperty Name="equipId" ColumnName="equipId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbltickets">
+            <EntityTypeMapping TypeName="CS405Model.tblticket">
+              <MappingFragment StoreEntitySet="tbltickets">
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Problem" ColumnName="Problem" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
