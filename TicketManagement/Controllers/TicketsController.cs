@@ -16,16 +16,20 @@ namespace TicketManagement.Controllers
 
         public ActionResult Index(string txtsearch)
         {
+            ViewBag.type = 0;
+
             //create a variable for all the list users;
             var uTypeList = new List<string>();
+
             //create a query on selecting all the users with usertyoe
-            var uTypequery = from d in db.tbltickets orderby d.Problem select d.Problem;
+            var uTypequery = from d in db.tbltickets orderby d.TicketNumber select d.TicketNumber;
 
             //add the result of the query on the variable list
             uTypeList.AddRange(uTypequery.Distinct());
 
             //create the view bag of the resulet
             ViewBag.TicketNumber = new SelectList(uTypeList);
+
             //select all the users
             var accts = from m in db.tbltickets select m;
 
@@ -34,8 +38,6 @@ namespace TicketManagement.Controllers
             {
                 accts = accts.Where(s => s.Status.Contains(txtsearch));
             }
-
-            //SWEETALERT
 
             //return all the user
             return View(accts.ToList());
@@ -136,12 +138,17 @@ namespace TicketManagement.Controllers
         }
 
         //GET: /Accounts/
-        public ActionResult Details(int id)
+        public ActionResult Details(int Id)
         {
-            using (CS405Entities2 db = new CS405Entities2())
-            {
-                return View(db.tbltickets.Where(x => x.TicketId == id).FirstOrDefault());
-            }
+            //using (CS405Entities2 db = new CS405Entities2())
+            //{
+            //    return View(db.tbltickets.Where(x => x.TicketId == id).FirstOrDefault());
+
+            //}
+
+            tblticket ticketN = new tblticket();
+            ticketN = db.tbltickets.Find(Id);
+            return PartialView("_Details", ticketN);
         }
     }
 }

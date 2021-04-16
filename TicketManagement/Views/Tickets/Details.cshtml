@@ -9,83 +9,184 @@
 <br />
 <h2>Ticket Details</h2>
 <hr />
-<div>
+@*<div>
 
-    <dl class="row">
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.TicketNumber)
-        </dt>
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.TicketNumber)
+            </dt>
 
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.TicketNumber)
-        </dd>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.TicketNumber)
+            </dd>
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.Problem)
-        </dt>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Problem)
+            </dt>
 
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.Problem)
-        </dd>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Problem)
+            </dd>
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.Details)
-        </dt>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Details)
+            </dt>
 
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.Details)
-        </dd>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Details)
+            </dd>
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Status)
+            </dd>
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.Time)
-        </dt>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Time)
+            </dt>
 
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.Time)
-        </dd>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Time)
+            </dd>
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
 
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.AssignedTo)
-        </dt>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.AssignedTo)
+            </dt>
 
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.AssignedTo)
-        </dd>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.AssignedTo)
+            </dd>
 
-        <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.ApprovedBy)
-        </dt>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.ApprovedBy)
+            </dt>
 
-        <dd class="col-sm-9">
-            @Html.DisplayFor(model => model.ApprovedBy)
-        </dd>
-    </dl>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.ApprovedBy)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.TicketId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+
+<div class="container">
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+
+                        <dl class="row">
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.TicketNumber)
+                            </dt>
+
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.TicketNumber)
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.Problem)
+                            </dt>
+
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Problem)
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.Details)
+                            </dt>
+
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Details)
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.Status)
+                            </dt>
+
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Status)
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.Date)
+                            </dt>
+
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Date)
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.Time)
+                            </dt>
+
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Time)
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.CreatedBy)
+                            </dt>
+
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.CreatedBy)
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.AssignedTo)
+                            </dt>
+
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.AssignedTo)
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.ApprovedBy)
+                            </dt>
+
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.ApprovedBy)
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TicketId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

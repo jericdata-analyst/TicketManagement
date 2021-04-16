@@ -11,27 +11,51 @@ namespace TicketManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tblaccount
     {
-        public int id { get; set; }
+    
+            public int id { get; set; }
 
-        public string username { get; set; }
+            [Display(Name = "Username")]
+            [Required]
+            [UIHint("username")]
+            public string username { get; set; }
 
-        public string password { get; set; }
+            [Required]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
 
-        public string usertype { get; set; }
+            [Required]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
 
-        public string status { get; set; }
+            [Display(Name = "Middle Name")]
+            public string MiddleName { get; set; }
 
-        public string LastName { get; set; }
+            [Required]
+            [StringLength(30, MinimumLength = 8, ErrorMessage = "Password should be atleast 8 characters")]
+            [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Only Alphabets and Numbers allowed.")]
+            [Display(Name = "Password")]
+            public string password { get; set; }
 
-        public string FirstName { get; set; }
+            [Required]
+            [Display(Name = "Department")]
+            public string department { get; set; }
 
-        public string MiddleName { get; set; }
+            [Required]
+            [Display(Name = "Branch")]
+            public string branch { get; set; }
 
-        public string department { get; set; }
+            [Required]
+            [Display(Name = "Usertype")]
+            public string usertype { get; set; }
 
-        public string branch { get; set; }
-    }
+            [Display(Name = "Status")]
+            public string status { get; set; }
+        
+
+    
+}
 }

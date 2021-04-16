@@ -11,27 +11,41 @@ namespace TicketManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tblticket
     {
         public int TicketId { get; set; }
 
+        [Display(Name = "Ticket Number")]
         public string TicketNumber { get; set; }
 
+        [Required]
         public string Problem { get; set; }
 
+        
+        [DataType(DataType.MultilineText)]
         public string Details { get; set; }
 
+        [Required]
         public string Status { get; set; }
 
+       // [Required]
         public string Date { get; set; }
 
+       // [Required]
         public string Time { get; set; }
 
+        [Display(Name = "Created By")]
         public string CreatedBy { get; set; }
 
+        [Display(Name = "Assigned to")]
         public string AssignedTo { get; set; }
 
+        [Display(Name = "Approved By")]
+        //[Required]
         public string ApprovedBy { get; set; }
+
+        public string displayticketnum { get; set; }
     }
 }

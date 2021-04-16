@@ -23,15 +23,23 @@
         <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.TicketNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TicketNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TicketNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.TicketNumber, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.Problem, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Problem, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-10 ">
+
+                @Html.DropDownList("Problem", new List<SelectListItem>
+        {
+          new SelectListItem { Text = "Select Problem" ,Value = "", Selected=true},
+          new SelectListItem { Text = "Hardware" ,Value = "Hardware"},
+          new SelectListItem { Text = "Software" ,Value = "Software"},
+          new SelectListItem { Text = "Connection" ,Value = "Connection"},
+          }, new { @class = "form-control" })
+
                 @Html.ValidationMessageFor(model => model.Problem, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -91,11 +99,12 @@
                 @Html.ValidationMessageFor(model => model.ApprovedBy, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <div class="col-md-offset-2 col-md-10">
                 <button type="submit" id="btnAlertMessage" class="btn btn-success" value="Save">
                     Save
                 </button>
+                <input type="button" value="Cancel" class="btn btn-warning" onclick="window.open('https://localhost:44343/Tickets/','resizable=yes')" />
             </div>
         </div>
     </div>

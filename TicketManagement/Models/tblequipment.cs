@@ -11,18 +11,52 @@ namespace TicketManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tblequipment
     {
         public int equipId { get; set; }
+
+        [Required]
+        [Display(Name = "Asset Number")]
         public string AssetNumber { get; set; }
+
+
+        [Required]
+        [Display(Name = "Serial Number")]
         public string SerialNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Type")]
         public string Type { get; set; }
+
+
+        [Required]
+        [Display(Name = "Manufacturer")]
         public string Manufacturer { get; set; }
+
+
+        [Required]
+        [Display(Name = "Year Model")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Year should only be numeric.")]
+        [StringLength(4, MinimumLength = 4, ErrorMessage = "Year should contain 4 characters only.")]
         public string YearModel { get; set; }
+
+        [Display(Name = "Description")]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
+
+        [Required]
+        [Display(Name = "Branch")]
         public string Branch { get; set; }
+
+        [Required]
+        [Display(Name = "Department")]
         public string Department { get; set; }
+
+        [Display(Name = "Status")]
         public string EquipmentStatus { get; set; }
     }
 }
+
