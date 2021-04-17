@@ -18,8 +18,8 @@ namespace TicketManagement.Models
     
             public int id { get; set; }
 
-            [Display(Name = "Username")]
-            [Required]
+            [Display(Name = "User Name")]
+            [Required(ErrorMessage = "This field is required")]
             [UIHint("username")]
             public string username { get; set; }
 
@@ -34,10 +34,11 @@ namespace TicketManagement.Models
             [Display(Name = "Middle Name")]
             public string MiddleName { get; set; }
 
-            [Required]
-            [StringLength(30, MinimumLength = 8, ErrorMessage = "Password should be atleast 8 characters")]
+            //[Required(ErrorMessage ="This field is required")]
+            //[StringLength(30, MinimumLength = 8, ErrorMessage = "Password should be atleast 8 characters")]
             [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Only Alphabets and Numbers allowed.")]
             [Display(Name = "Password")]
+            [DataType(DataType.Password)]
             public string password { get; set; }
 
             [Required]
@@ -55,7 +56,7 @@ namespace TicketManagement.Models
             [Display(Name = "Status")]
             public string status { get; set; }
         
-
+        public string LoginErrorMessage { get; set; }
     
 }
 }

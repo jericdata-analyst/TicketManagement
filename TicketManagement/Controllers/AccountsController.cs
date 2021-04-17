@@ -140,5 +140,10 @@ namespace TicketManagement.Controllers
                 return View(db.tblaccounts.Where(x => x.id == id).FirstOrDefault());
             }
         }
+
+        public ActionResult Authorize()
+        {
+            return View();
+        }
     }
 }
