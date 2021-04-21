@@ -1,32 +1,74 @@
-﻿@model TicketManagement.Models.tblticket
+﻿@*@model TicketManagement.Models.tblticket
+
+    @Html.HiddenFor(model => model.TicketId)
+    <div>
+
+        <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Assigned Ticket</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group input-group mb-3">
+                @Html.LabelFor(model => model.TicketNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TicketNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.TicketNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group input-group mb-3">
+                @Html.LabelFor(model => model.AssignedTo, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10 ">
+
+                    @Html.DropDownList("AssignedTo", new List<SelectListItem>
+            {
+              new SelectListItem { Text = "Select Technician" ,Value = "", Selected=true},
+              new SelectListItem { Text = "Technician1" ,Value = "Technician1"},
+              new SelectListItem { Text = "Technician2" ,Value = "Technician2"},
+              new SelectListItem { Text = "Technician3" ,Value = "Technician3"},
+              }, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.Problem, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" id="btnAlertMessage" class="btn btn-success" value="Save">
+            Assign
+        </button>
+        <input type="button" value="Cancel" class="btn btn-warning" onclick="window.open('https://localhost:44343/Tickets/','resizable=yes')" />
+    </div>*@
+
+@model TicketManagement.Models.tblticket
 
 @{
     ViewBag.Title = "Edit";
 }
-
-<br />a
-<br />
-<br />
-<br />
-<h2>Edit</h2>
-
+<div class="modal-header">
+    <h5 class="modal-title" id="myModalLabel">Assigned Ticket</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+</div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+<div class="form-horizontal">
+    <br />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.TicketId)
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.TicketId)
-
-        <div class="form-group input-group mb-3">
-            @Html.LabelFor(model => model.TicketNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TicketNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.TicketNumber, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group input-group mb-3">
+        @Html.LabelFor(model => model.TicketNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10 ">
+            @Html.EditorFor(model => model.TicketNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.TicketNumber, "", new { @class = "text-danger" })
         </div>
+    </div>
+    <div style="display:none">
 
         <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.Problem, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -86,6 +128,14 @@
         </div>
 
         <div class="form-group input-group mb-3">
+            @Html.LabelFor(model => model.ApprovedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ApprovedBy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ApprovedBy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+<div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.AssignedTo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10 ">
 
@@ -100,28 +150,16 @@
                 @Html.ValidationMessageFor(model => model.AssignedTo, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group input-group mb-3">
-            @Html.LabelFor(model => model.ApprovedBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ApprovedBy, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ApprovedBy, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <div class="col-md-offset-2 col-md-10">
-                <button type="submit" id="btnAlertMessage" class="btn btn-success" value="Save">
-                    Save
-                </button>
-                <input type="button" value="Cancel" class="btn btn-warning" onclick="window.open('https://localhost:44343/Tickets/','resizable=yes')" />
-            </div>
-        </div>
-    </div>
+</div>
+<div class="modal-footer">
+    <button type="submit" id="btnAlertMessage" class="btn btn-success" value="Save">
+        Save
+    </button>
+    <input type="button" value="Cancel" class="btn btn-warning" onclick="window.open('https://localhost:44343/Tickets/','resizable=yes')" />
+</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

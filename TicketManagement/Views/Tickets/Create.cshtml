@@ -23,7 +23,7 @@
 
             @Html.LabelFor(model => model.TicketNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10" style="display:none">
-                @Html.EditorFor(model => model.TicketNumber, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") } })
+                @Html.EditorFor(model => model.TicketNumber, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("yyyyMMddHHmmss") } })
             </div>
             <div class="col-md-10">
                 <p id="p1">  </p>
@@ -32,11 +32,11 @@
 
                     var today = new Date();
 
-                    var date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+                    var date = today.getFullYear() + '' + (today.getMonth() + 1) + '' + today.getDate();
 
-                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    var time = today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
 
-                    var dateTime = date + ' ' + time;
+                    var dateTime = date + '' + time;
                     document.getElementById("p1").innerHTML = dateTime;
                 </script>
             </div>
@@ -72,22 +72,14 @@
         <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
 
-            <div class="col-md-10 " style="display:none">
+            <div class="col-md-10 ">
 
                 @Html.DropDownList("Status", new List<SelectListItem>
          {
            new SelectListItem { Text = "Pending" ,@Value = "Pending"},
+           new SelectListItem { Text = "OPTION1" ,@Value = "OPTION1"},
+           new SelectListItem { Text = "OPTION2" ,@Value = "OPTION2"},
            }, new { @class = "form-control" })
-            </div>
-
-            <div class="col-md-10 ">
-
-                @Html.DropDownList("displaystatus", new List<SelectListItem>
-        {
-          new SelectListItem { Text = "Pending" ,Value = "Pending", Selected=true},
-          }, new { @class = "form-control", disabled = "disabled" })
-
-                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -113,24 +105,8 @@
         <div class="form-group input-group mb-3">
             @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control", Value = Session["username"].ToString(), @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group input-group mb-3 ">
-            @Html.LabelFor(model => model.AssignedTo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AssignedTo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.AssignedTo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group input-group mb-3">
-            @Html.LabelFor(model => model.ApprovedBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ApprovedBy, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.ApprovedBy, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>

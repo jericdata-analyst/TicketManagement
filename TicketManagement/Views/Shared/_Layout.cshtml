@@ -7,11 +7,52 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .social-btn .btn {
+            color: #fff;
+            margin: 0 0 0 0px;
+            font-size: 5px;
+            width: 5px;
+            height: 1px;
+            line-height: 10px;
+            border-radius: 50%;
+            font-weight: normal;
+            text-align: center;
+            border: none;
+            transition: all 0.4s;
+        }
+
+            .social-btn .btn:first-child {
+                margin-left: 0;
+            }
+
+            .social-btn .btn:hover {
+                opacity: 0.8;
+            }
+
+        .social-btn .btn-primary {
+            background: #507cc0;
+        }
+
+        .social-btn .btn-info {
+            background: #64ccf1;
+        }
+
+        .social-btn .btn-danger {
+            background: #df4930;
+        }
+
+        .social-btn .btn i {
+            font-size: 20px;
+        }
+    </style>
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
 
     <img src="~/img/aulogo.png" width="30" height="30" class="d-inline-block align-top" alt=""> &nbsp;
-    <a class="navbar-brand" href="https://localhost:44343/Home/About">Ticket Management</a>
+    <a class="navbar-brand" href="https://localhost:44343/Home/Index">Ticket Management</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,33 +64,42 @@
                         Home
                     </a>
                 </li>*@
+
+           
+
             <li class="nav-item">
-                <a class="nav-link" href="https://localhost:44343/Accounts/">Accounts</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://localhost:44343/Equipments/">Equipments</a>
-            </li>
+                    <a class="nav-link" href="https://localhost:44343/Accounts/">Accounts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://localhost:44343/Equipments/">Equipments</a>
+                </li>
             <li class="nav-item">
                 <a class="nav-link" href="https://localhost:44343/Tickets/">Tickets</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="https://localhost:44343/Home/About">About</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
+            @*<li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("LogOut","Login")">Logout</a>
+                </li>*@
+
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@Session["username"].ToString()</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">action</a>
+
+                    <div class="dropdown-divider"> </div>
+                    <a class="dropdown-item" href="@Url.Action("LogOut","Login")">Logout</a>
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <div class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </div>
+        <div class="d-flex flex-row-reverse bd-highlight">
+        </div>
     </div>
 </nav>
 
@@ -104,14 +154,19 @@
                             <h5 class="f-title f_600 t_color f_size_18">Team Solutions</h5>
                             <div class="f_social_icon">
                                 <p style="text-align:left">
-                                    <!--Facebook icon-->
+
                                     <a href="http://facebook.com/" target="_blank"><img alt="" src="https://s3.amazonaws.com/flashissue/ueBIjxRoTBuYR6XWW1iO_v3qVW5nRUq5VZF9RQXi2_twitter.png" /> </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <!--Google+ icon-->
+
                                     <a href="http://www.google.com" target="_blank"><img alt="" src="https://s3.amazonaws.com/flashissue/gHd2XoyiQbKBqljm7bzg_63j3xtd7SX28TTMeOSfZ_google.png" /> </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <!--Twitter icon-->
+
                                     <a href="http://twitter.com/" target="_blank"><img alt="" src="https://s3.amazonaws.com/flashissue/MsIJsIsDT9WLAxxH4aIK_OgdHV3vxSR2737LGd8cq_facebook.png" /> </a>
                                 </p>
                             </div>
+                            @*<div class="social-btn ">
+                                    <a href="https://www.facebook.com/" class="btn btn-primary btn-lg" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://mobile.twitter.com/login" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="https://accounts.google.com/signin/v2/identifier?service=accountsettings&continue=https%3A%2F%2Fmyaccount.google.com%3Futm_source%3Daccount-marketing-page%26utm_medium%3Dgo-to-account-button&flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
+                                </div>*@
                         </div>
                     </div>
                 </div>
@@ -124,7 +179,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-sm-7">
-                            <p class="mb-0 f_400">© Jeric Malapad.. 2021 All rights reserved.</p>
+                            <p class="mb-0 f_400">Copyright© 2021, Jeric Malapad</p>
                         </div>
                     </div>
                 </div>

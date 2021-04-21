@@ -21,6 +21,8 @@ namespace TicketManagement.Controllers
             using (CS405Entities2 db = new CS405Entities2())
             {
                 var userDetails = db.tblaccounts.Where(x => x.username == account.username && x.password == account.password).FirstOrDefault();
+                var userType = db.tblaccounts.Where(x => x.usertype == account.usertype).FirstOrDefault();
+
                 if (userDetails == null)
                 {
                     account.LoginErrorMessage = "Wrong username or password";
@@ -30,6 +32,7 @@ namespace TicketManagement.Controllers
                 {
                     Session["id"] = userDetails.id;
                     Session["username"] = userDetails.username;
+                    Session["usertype"] = userDetails.usertype;
                     return RedirectToAction("Index", "Home");
                 }
             }

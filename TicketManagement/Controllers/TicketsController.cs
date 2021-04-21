@@ -140,15 +140,36 @@ namespace TicketManagement.Controllers
         //GET: /Accounts/
         public ActionResult Details(int Id)
         {
-            //using (CS405Entities2 db = new CS405Entities2())
-            //{
-            //    return View(db.tbltickets.Where(x => x.TicketId == id).FirstOrDefault());
-
-            //}
-
             tblticket ticketN = new tblticket();
             ticketN = db.tbltickets.Find(Id);
             return PartialView("_Details", ticketN);
+        }
+
+        [HttpGet]
+        public ActionResult Assigned(int Id)
+        {
+            tblticket ticketN = new tblticket();
+            ticketN = db.tbltickets.Find(Id);
+            return PartialView("_Assigned", ticketN);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Assigned([Bind(Include = "TicketId,TicketNumber,Problem,Details,Status,Date,Time,CreatedBy,AssignedTo,ApprovedBy")] tblticket editTicket, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                TempData["MsgAssign"] = "Ticket Assigned";
+                db.Entry(editTicket).State = System.Data.Entity.EntityState.Added;
+
+                tblticket acc = db.tbltickets.Where(x => x.TicketId == id).FirstOrDefault();
+                db.tbltickets.Remove(acc);
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(editTicket);
         }
     }
 }

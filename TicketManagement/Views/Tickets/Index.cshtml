@@ -106,7 +106,12 @@
 
                             @*<input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.TicketId })'" /> &nbsp;*@
 
-                            <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.TicketId })'" />
+                            <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.TicketId })'" />   &nbsp;
+                            <div>
+                                <button class="btn btn-dark btn-sm">
+                                    <a href="javascript:void(0);" class="anchorAssign" data-id="@item.TicketId" style="color:white">Assign </a>
+                                </button>
+                            </div>
                         </div>
                     </td>
                 </tr>
@@ -117,9 +122,7 @@
             <div class="modal-dialog modal-dialog-centered ">
                 <div class="modal-content">
                     <div id='myModalContent'>
-
                     </div>
-                   
                 </div>
             </div>
         </div>
@@ -130,11 +133,7 @@
                 <button type="button" class="btn btn-secondary">2</button>
                 <button type="button" class="btn btn-secondary">3</button>
                 <button type="button" class="btn btn-secondary">4</button>
-            </div>
-            <div class="btn-group mr-2" role="group" aria-label="Second group">
                 <button type="button" class="btn btn-secondary">5</button>
-                <button type="button" class="btn btn-secondary">6</button>
-                <button type="button" class="btn btn-secondary">7</button>
             </div>
         </div>
 
@@ -147,6 +146,7 @@
         var msg = '@TempData["Msg"]';
         var msg1 = '@TempData["MsgEdit"]';
         var msg2 = '@TempData["MsgDelete"]';
+        var msg3 = '@TempData["MsgAssign"]';
 
     if (msg.length) {
         swal(
@@ -166,7 +166,14 @@
                 'Ticket Deleted Succesfully!',
                 'success');
 
-        }
+            }
+            if (msg3.length) {
+                swal(
+                    'Success!',
+                    'Ticket Assign Succesfully!',
+                    'success');
+
+            }
         </script>
 
         @section scripts
@@ -174,18 +181,22 @@
             <script src="~/Scripts/jquery-1.10.2.min.js"></script>
             <script src="~/Scripts/bootstrap.js"></script>
             <script src="~/Scripts/bootstrap.min.js"></script>
+
             <script>
 
-                var TeamDetailPostBackURL = '/Tickets/Details';
+                var TeamDetailPostBackURLDetails = '/Tickets/Details';
+                var TeamDetailPostBackURLAssign = '/Tickets/Assigned';
+
                 $(function () {
-                    $(".anchorDetail").click(function () {
+                    $(".anchorAssign").click(function () {
                         debugger;
                         var $buttonClicked = $(this);
                         var id = $buttonClicked.attr('data-id');
                         var options = { "backdrop": "static", keyboard: true };
+
                         $.ajax({
                             type: "GET",
-                            url: TeamDetailPostBackURL,
+                            url: TeamDetailPostBackURLAssign,
                             contentType: "application/json; charset=utf-8",
                             data: { "Id": id },
                             datatype: "json",
@@ -194,15 +205,44 @@
                                 $('#myModalContent').html(data);
                                 $('#myModal').modal(options);
                                 $('#myModal').modal('show');
-
                             },
+
                             error: function () {
                                 alert("Dynamic content load failed.");
                             }
                         });
                     });
-                    //$("#closebtn").on('click',function(){
-                    //    $('#myModal').modal('hide');
+
+                    $("#closbtn").click(function () {
+                        $('#myModal').modal('hide');
+                    });
+                });
+
+                $(function () {
+                    $(".anchorDetail").click(function () {
+                        debugger;
+                        var $buttonClicked = $(this);
+                        var id = $buttonClicked.attr('data-id');
+                        var options = { "backdrop": "static", keyboard: true };
+
+                        $.ajax({
+                            type: "GET",
+                            url: TeamDetailPostBackURLDetails,
+                            contentType: "application/json; charset=utf-8",
+                            data: { "Id": id },
+                            datatype: "json",
+                            success: function (data) {
+                                debugger;
+                                $('#myModalContent').html(data);
+                                $('#myModal').modal(options);
+                                $('#myModal').modal('show');
+                            },
+
+                            error: function () {
+                                alert("Dynamic content load failed.");
+                            }
+                        });
+                    });
 
                     $("#closbtn").click(function () {
                         $('#myModal').modal('hide');

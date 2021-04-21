@@ -34,7 +34,7 @@ namespace TicketManagement.Models
             [Display(Name = "Middle Name")]
             public string MiddleName { get; set; }
 
-            //[Required(ErrorMessage ="This field is required")]
+            [Required(ErrorMessage ="This field is required")]
             //[StringLength(30, MinimumLength = 8, ErrorMessage = "Password should be atleast 8 characters")]
             [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Only Alphabets and Numbers allowed.")]
             [Display(Name = "Password")]

@@ -5,16 +5,22 @@
     {
         Response.Redirect("~/Login/Index");
     }
+
 }
-
 <div class="jumbotron">
-    <h1>Dashboard</h1>
+    
+    <div class="d-flex flex-row-reverse bd-highlight">
 
-    @*<h2>User: @Session["username"].ToString() </h2*@
+        <div class="p-2 bd-highlight"> User: @Session["username"].ToString() </div>
+
+    </div>
+
+
+    <h1>Welcome</h1>
 
     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur .</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    <p><a href="@Url.Action("LogOut","Login")" class="btn btn-warning btn-lg">Logout user</a></p>
+
+    
 </div>
 
 <div class="row">
