@@ -2,6 +2,18 @@
 
 @{
     ViewBag.Title = "Index";
+    if (Session["id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if (Session["username"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if (Session["usertype"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 <br />
 <br />
@@ -14,9 +26,14 @@
     @using (Html.BeginForm("Index", "Tickets", FormMethod.Get))
     {
         <div class="d-flex bd-highlight">
-            <div class="p-2 flex-grow-1 bd-highlight">
-                <input type="button" class="btn btn-outline-success" value="Create New Ticket" onclick="location.href='https://localhost:44343/Tickets/create'" />
-            </div>
+
+            @if (@Session["usertype"].ToString() == "User")
+            {
+                <div class="p-2 flex-grow-1 bd-highlight">
+                    <input type="button" class="btn btn-outline-success" value="Create New Ticket" onclick="location.href='https://localhost:44343/Tickets/create'" />
+                </div>
+
+            }
 
             <div class="p-2 bd-highlight">
     <p class="mx-auto">
@@ -28,7 +45,6 @@
 
 }
     </p>
-
     <div class="position-relative">
 
         <table class="table table-striped">
@@ -98,50 +114,83 @@
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                            <input type="submit" class="btn btn-success btn-sm" value=" Edit  " onclick="location.href='@Url.Action("Edit", new { id = item.TicketId })'" /> &nbsp;
+                            @*<input type="submit" class="btn btn-success btn-sm" value=" Edit  " onclick="location.href='@Url.Action("Edit", new { id = item.TicketId })'" /> &nbsp;*@
 
-                            <button class="btn btn-info btn-sm">
-                                <a href="javascript:void(0);" class="anchorDetail" data-id="@item.TicketId" style="color:white">Details</a>
-                            </button> &nbsp;
+                            @if (@Session["usertype"].ToString() == "Administrator")
+                            {
 
-                            @*<input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.TicketId })'" /> &nbsp;*@
-
-                            <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.TicketId })'" />   &nbsp;
-                            <div>
-                                <button class="btn btn-dark btn-sm">
-                                    <a href="javascript:void(0);" class="anchorAssign" data-id="@item.TicketId" style="color:white">Assign </a>
+                                <button class="btn btn-info btn-sm">
+                                    <a href="javascript:void(0);" class="anchorDetail" data-id="@item.TicketId" style="color:white">Details</a>
                                 </button>
-                            </div>
+                                @*<input type="submit" class="btn btn-info btn-sm" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.TicketId })'" /> &nbsp;*@
+                                <text>&nbsp;</text>
+
+                                <div>
+                                    <button class="btn btn-dark btn-sm">
+                                        <a href="javascript:void(0);" class="anchorAssign" data-id="@item.TicketId" style="color:white">Assign </a>
+                                    </button>
+                                </div>
+                                <text>&nbsp;</text>
+                                <div>
+                                    <button class="btn btn-success btn-sm">
+                                        <a href="javascript:void(0);" class="anchorApproved" data-id="@item.TicketId" style="color:white">Approved </a>
+                                    </button>
+                                </div>
+                                <text>&nbsp;</text>
+                                <input type="submit" class="btn btn-danger btn-sm" value="  Delete  " onclick="location.href='@Url.Action("Delete", new { id = item.TicketId })'" />
+
+                            }
+
+                            @if (@Session["usertype"].ToString() == "Technical")
+                            {
+                                <div>
+                                    <button class="btn btn-success btn-sm">
+                                        <a href="javascript:void(0);" class="anchorComplete" data-id="@item.TicketId" style="color:white">Complete </a>
+                                    </button>
+                                </div>
+                                <text>&nbsp;</text>
+                                <button class="btn btn-info btn-sm">
+                                    <a href="javascript:void(0);" class="anchorDetail" data-id="@item.TicketId" style="color:white">Details</a>
+                                </button>
+                            }
+
+                            @if (@Session["usertype"].ToString() == "User")
+                            {
+
+                                <text>&nbsp;</text>
+
+                            }
                         </div>
                     </td>
                 </tr>
             }
         </table>
+    </div>
 
-        <div id='myModal' class='modal'>
-            <div class="modal-dialog modal-dialog-centered ">
-                <div class="modal-content">
-                    <div id='myModalContent'>
-                    </div>
+    <div id='myModal' class='modal'>
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+                <div id='myModalContent'>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-secondary">1</button>
-                <button type="button" class="btn btn-secondary">2</button>
-                <button type="button" class="btn btn-secondary">3</button>
-                <button type="button" class="btn btn-secondary">4</button>
-                <button type="button" class="btn btn-secondary">5</button>
-            </div>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <button type="button" class="btn btn-secondary">1</button>
+            <button type="button" class="btn btn-secondary">2</button>
+            <button type="button" class="btn btn-secondary">3</button>
+            <button type="button" class="btn btn-secondary">4</button>
+            <button type="button" class="btn btn-secondary">5</button>
         </div>
+    </div>
 
-        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
 
         var msg = '@TempData["Msg"]';
         var msg1 = '@TempData["MsgEdit"]';
@@ -174,80 +223,146 @@
                     'success');
 
             }
+    </script>
+
+    @section scripts
+{
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+
+        <script>
+
+            var TeamDetailPostBackURLDetails = '/Tickets/Details';
+            var TeamDetailPostBackURLAssign = '/Tickets/Assigned';
+            var TeamDetailPostBackURLApproved = '/Tickets/Approved';
+            var TeamDetailPostBackURLComplete = '/Tickets/Complete';
+
+            $(function () {
+                $(".anchorAssign").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+
+                    $.ajax({
+                        type: "GET",
+                        url: TeamDetailPostBackURLAssign,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            debugger;
+                            $('#myModalContent').html(data);
+                            $('#myModal').modal(options);
+                            $('#myModal').modal('show');
+                        },
+
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+                $("#closbtn").click(function () {
+                    $('#myModal').modal('hide');
+                });
+            });
+
+            $(function () {
+                $(".anchorDetail").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+
+                    $.ajax({
+                        type: "GET",
+                        url: TeamDetailPostBackURLDetails,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            debugger;
+                            $('#myModalContent').html(data);
+                            $('#myModal').modal(options);
+                            $('#myModal').modal('show');
+                        },
+
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+                $("#closbtn").click(function () {
+                    $('#myModal').modal('hide');
+                });
+            });
+
+            $(function () {
+                $(".anchorApproved").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+
+                    $.ajax({
+                        type: "GET",
+                        url: TeamDetailPostBackURLApproved,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            debugger;
+                            $('#myModalContent').html(data);
+                            $('#myModal').modal(options);
+                            $('#myModal').modal('show');
+                        },
+
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+                $("#closbtn").click(function () {
+                    $('#myModal').modal('hide');
+                });
+            });
+
+            $(function () {
+                $(".anchorComplete").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+
+                    $.ajax({
+                        type: "GET",
+                        url: TeamDetailPostBackURLComplete,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            debugger;
+                            $('#myModalContent').html(data);
+                            $('#myModal').modal(options);
+                            $('#myModal').modal('show');
+                        },
+
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+                $("#closbtn").click(function () {
+                    $('#myModal').modal('hide');
+                });
+            });
+
+            
         </script>
 
-        @section scripts
-{
-            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-            <script src="~/Scripts/bootstrap.js"></script>
-            <script src="~/Scripts/bootstrap.min.js"></script>
-
-            <script>
-
-                var TeamDetailPostBackURLDetails = '/Tickets/Details';
-                var TeamDetailPostBackURLAssign = '/Tickets/Assigned';
-
-                $(function () {
-                    $(".anchorAssign").click(function () {
-                        debugger;
-                        var $buttonClicked = $(this);
-                        var id = $buttonClicked.attr('data-id');
-                        var options = { "backdrop": "static", keyboard: true };
-
-                        $.ajax({
-                            type: "GET",
-                            url: TeamDetailPostBackURLAssign,
-                            contentType: "application/json; charset=utf-8",
-                            data: { "Id": id },
-                            datatype: "json",
-                            success: function (data) {
-                                debugger;
-                                $('#myModalContent').html(data);
-                                $('#myModal').modal(options);
-                                $('#myModal').modal('show');
-                            },
-
-                            error: function () {
-                                alert("Dynamic content load failed.");
-                            }
-                        });
-                    });
-
-                    $("#closbtn").click(function () {
-                        $('#myModal').modal('hide');
-                    });
-                });
-
-                $(function () {
-                    $(".anchorDetail").click(function () {
-                        debugger;
-                        var $buttonClicked = $(this);
-                        var id = $buttonClicked.attr('data-id');
-                        var options = { "backdrop": "static", keyboard: true };
-
-                        $.ajax({
-                            type: "GET",
-                            url: TeamDetailPostBackURLDetails,
-                            contentType: "application/json; charset=utf-8",
-                            data: { "Id": id },
-                            datatype: "json",
-                            success: function (data) {
-                                debugger;
-                                $('#myModalContent').html(data);
-                                $('#myModal').modal(options);
-                                $('#myModal').modal('show');
-                            },
-
-                            error: function () {
-                                alert("Dynamic content load failed.");
-                            }
-                        });
-                    });
-
-                    $("#closbtn").click(function () {
-                        $('#myModal').modal('hide');
-                    });
-                });
-            </script>
-
-        }
+    }

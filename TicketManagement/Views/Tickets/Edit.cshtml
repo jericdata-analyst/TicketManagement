@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "Edit";
+    if (Session["id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 
 <br />a

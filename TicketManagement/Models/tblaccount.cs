@@ -58,5 +58,6 @@ namespace TicketManagement.Models
         
         public string LoginErrorMessage { get; set; }
     
-}
+        public List<tblaccount> AssignedTo { get; set; }
+    }
 }

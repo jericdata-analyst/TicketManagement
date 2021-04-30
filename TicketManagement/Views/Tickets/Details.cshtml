@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "Details";
+    if (Session["id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 <br />
 <br />
@@ -166,19 +170,19 @@
                             </dd>
 
                             <dt class="col-sm-3">
-                                @Html.DisplayNameFor(model => model.AssignedTo)
-                            </dt>
-
-                            <dd class="col-sm-9">
-                                @Html.DisplayFor(model => model.AssignedTo)
-                            </dd>
-
-                            <dt class="col-sm-3">
                                 @Html.DisplayNameFor(model => model.ApprovedBy)
                             </dt>
 
                             <dd class="col-sm-9">
                                 @Html.DisplayFor(model => model.ApprovedBy)
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.AssignedTo)
+                            </dt>
+
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.AssignedTo)
                             </dd>
                         </dl>
                     </div>

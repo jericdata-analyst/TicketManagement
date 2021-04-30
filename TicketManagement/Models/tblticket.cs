@@ -12,6 +12,7 @@ namespace TicketManagement.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
 
     public partial class tblticket
     {
@@ -48,11 +49,9 @@ namespace TicketManagement.Models
 
         public string displayticketnum { get; set; }
 
-        public class EditPersonViewModel
-        {
-            public int Id { get; set; }   // this is only used to retrieve record from Db
-            public string Name { get; set; }
-            public string Age { get; set; }
-        }
+        public List<tblticket> TechList { get; set; }
+
+
     }
+
 }

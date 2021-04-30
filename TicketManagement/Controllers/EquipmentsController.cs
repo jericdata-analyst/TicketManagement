@@ -71,6 +71,7 @@ namespace TicketManagement.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             tblequipment editEquipment = db.tblequipments.Find(ID);
             if (editEquipment == null)
             {

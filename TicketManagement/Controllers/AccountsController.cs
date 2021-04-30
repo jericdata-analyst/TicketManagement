@@ -72,7 +72,8 @@ namespace TicketManagement.Controllers
         {
             if (ID == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest)
+                return RedirectToAction("Error/PageNotFound");
             }
             tblaccount editAccount = db.tblaccounts.Find(ID);
             if (editAccount == null)
@@ -85,8 +86,13 @@ namespace TicketManagement.Controllers
         //POST EDIT ACCOUNT
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LastName,FirstName,username,MiddleName,password,department,branch,usertype,status")] tblaccount editAccount, int id)
+        public ActionResult Edit([Bind(Include = "LastName,FirstName,username,MiddleName,password,department,branch,usertype,status")] tblaccount editAccount, int? id)
         {
+            if (id == null)
+            {
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest)
+                return RedirectToAction("Error/PageNotFound");
+            }
             if (ModelState.IsValid)
             {
                 TempData["MsgEdit"] = "Account Successfully Updated";
@@ -103,8 +109,14 @@ namespace TicketManagement.Controllers
         }
 
         //Get: /customer/delete
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
+            if (id == null)
+            {
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest)
+                return RedirectToAction("Error/PageNotFound");
+            }
+
             using (CS405Entities2 db = new CS405Entities2())
             {
                 return View(db.tblaccounts.Where(x => x.id == id).FirstOrDefault());
@@ -133,8 +145,14 @@ namespace TicketManagement.Controllers
         }
 
         //GET: /Accounts/
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest)
+                return RedirectToAction("Error/PageNotFound");
+            }
+
             using (CS405Entities2 db = new CS405Entities2())
             {
                 return View(db.tblaccounts.Where(x => x.id == id).FirstOrDefault());

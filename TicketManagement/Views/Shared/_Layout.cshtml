@@ -51,7 +51,7 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
 
-    <img src="~/img/aulogo.png" width="30" height="30" class="d-inline-block align-top" alt=""> &nbsp;
+    <img src="~/img/aulogo.png" width="60" height="60" class="d-inline-block align-top" alt=""> &nbsp;
     <a class="navbar-brand" href="https://localhost:44343/Home/Index">Ticket Management</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -60,46 +60,76 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             @*<li class="nav-item active">
-                    <a class="nav-link" href="https://localhost:44343/">
-                        Home
-                    </a>
-                </li>*@
+                <a class="nav-link" href="https://localhost:44343/">
+                    Home
+                </a>
+            </li>*@
 
-           
+            @if (@Session["usertype"].ToString() == "Administrator")
+            {
 
-            <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="https://localhost:44343/Accounts/">Accounts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://localhost:44343/Equipments/">Equipments</a>
                 </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://localhost:44343/Tickets/">Tickets</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://localhost:44343/Tickets/">Tickets</a>
+                </li>
+            }
+
+            @if (@Session["usertype"].ToString() == "User")
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="https://localhost:44343/Tickets/">Tickets</a>
+                </li>
+            }
+
+            @if (@Session["usertype"].ToString() == "Technical")
+
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="https://localhost:44343/Equipments/">Equipments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://localhost:44343/Tickets/">Tickets</a>
+                </li>
+            }
+
             <li class="nav-item">
                 <a class="nav-link" href="https://localhost:44343/Home/About">About</a>
             </li>
-            @*<li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("LogOut","Login")">Logout</a>
-                </li>*@
-
-            <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@Session["username"].ToString()</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Settings</a>
-                    <a class="dropdown-item" href="#">action</a>
-
-                    <div class="dropdown-divider"> </div>
-                    <a class="dropdown-item" href="@Url.Action("LogOut","Login")">Logout</a>
-                </div>
-            </li>
         </ul>
+        <div class="navbar-text">
+            
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown" style="color:white">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Welcome @Session["username"].ToString()</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" style="color:black" href="#">Settings</a>
+                        <a class="dropdown-item" style="color:black" href="#">action</a>
+
+                        <div class="dropdown-divider"> </div>
+                        <a class="dropdown-item" style="color:black" href="@Url.Action("LogOut","Login")">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <span class="navbar-text">
+
+        </span>
+
+
+
         <div class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            @*<input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>*@
         </div>
-        <div class="d-flex flex-row-reverse bd-highlight">
-        </div>
+
     </div>
 </nav>
 
@@ -129,23 +159,49 @@
                             <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
                                 <h5 class="f-title f_600 t_color f_size_18">Download</h5>
                                 <ul class="list-unstyled f_list">
-                                    <li><a href="#">Company</a></li>
-                                    <li><a href="#">Android App</a></li>
+                                    <li>
+                                        <a href="#">
+                                            Company
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <ahref ="#">
+                                            Android App
+                                            </a>
+                                    </li>
 
-                                    <li><a href="#">Desktop</a></li>
-                                    <li><a href="#">Projects</a></li>
+                                    <li>
+                                        <a href="#">
+                                            Desktop
+                                        </a>
+                                    <li>
+
+                                    <li><a href="#"> Projects </a></li>
                                 </ul>
                             </div>
                         </div>
+
                         <div class="col-lg-3 col-md-6">
                             <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
                                 <h5 class="f-title f_600 t_color f_size_18">Help</h5>
                                 <ul class="list-unstyled f_list">
-                                    <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Term &amp; conditions</a></li>
+                                    <li>
+                                        <a href="#">
+                                            FAQ
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            Term &amp; conditions
+                                        </a>
+                                    </li>
 
-                                    <li><a href="#">Support Policy</a></li>
-                                    <li><a href="#">Privacy</a></li>
+                                    <li><a href="#"> Support Policy</a></li>
+                                    <li>
+                                        <a href="#">
+                                            Privacy
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -155,7 +211,9 @@
                             <div class="f_social_icon">
                                 <p style="text-align:left">
 
-                                    <a href="http://facebook.com/" target="_blank"><img alt="" src="https://s3.amazonaws.com/flashissue/ueBIjxRoTBuYR6XWW1iO_v3qVW5nRUq5VZF9RQXi2_twitter.png" /> </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="http://facebook.com/" target="_blank">
+                                        <img alt="" src="https://s3.amazonaws.com/flashissue/ueBIjxRoTBuYR6XWW1iO_v3qVW5nRUq5VZF9RQXi2_twitter.png" />
+                                    </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                     <a href="http://www.google.com" target="_blank"><img alt="" src="https://s3.amazonaws.com/flashissue/gHd2XoyiQbKBqljm7bzg_63j3xtd7SX28TTMeOSfZ_google.png" /> </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -167,6 +225,7 @@
                                     <a href="https://mobile.twitter.com/login" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
                                     <a href="https://accounts.google.com/signin/v2/identifier?service=accountsettings&continue=https%3A%2F%2Fmyaccount.google.com%3Futm_source%3Daccount-marketing-page%26utm_medium%3Dgo-to-account-button&flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
                                 </div>*@
+                            </ul>
                         </div>
                     </div>
                 </div>

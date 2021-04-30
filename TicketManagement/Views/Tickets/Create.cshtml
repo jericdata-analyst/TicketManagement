@@ -2,6 +2,14 @@
 
 @{
     ViewBag.Title = "Create";
+    if (Session["id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if (Session["username"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 <br />
 <br />
@@ -77,9 +85,8 @@
                 @Html.DropDownList("Status", new List<SelectListItem>
          {
            new SelectListItem { Text = "Pending" ,@Value = "Pending"},
-           new SelectListItem { Text = "OPTION1" ,@Value = "OPTION1"},
-           new SelectListItem { Text = "OPTION2" ,@Value = "OPTION2"},
-           }, new { @class = "form-control" })
+         
+           }, new { @class = "form-control" , @readonly="readonly" })
             </div>
         </div>
 

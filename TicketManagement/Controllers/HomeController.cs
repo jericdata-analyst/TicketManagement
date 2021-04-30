@@ -3,6 +3,7 @@ using TicketManagement.Models;
 
 namespace TicketManagement.Controllers
 {
+    [HandleError]
     public class HomeController : Controller
     {
         private CS405Entities2 db = new CS405Entities2();

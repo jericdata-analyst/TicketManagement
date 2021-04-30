@@ -3,24 +3,31 @@
     ViewBag.Title = "Home Page";
     if (Session["id"] == null)
     {
+        Response.Redirect("~/Error/PageNotFound");
+    }
+    if (Session["username"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if (Session["usertype"] == null)
+    {
         Response.Redirect("~/Login/Index");
     }
 
 }
 <div class="jumbotron">
-    
+
     <div class="d-flex flex-row-reverse bd-highlight">
 
-        <div class="p-2 bd-highlight"> User: @Session["username"].ToString() </div>
-
+        <div class="p-2 bd-highlight"> UserName: @Session["username"].ToString() </div>
+        <div class="p-2 bd-highlight">
+            Usertype: @Session["usertype"].ToString()
+        </div>
     </div>
-
 
     <h1>Welcome</h1>
 
     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur .</p>
-
-    
 </div>
 
 <div class="row">
